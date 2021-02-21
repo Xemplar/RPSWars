@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <TextView
+            android:text="@string/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/login_email_label" android:paddingTop="5dp"
+            android:paddingLeft="5dp" android:paddingRight="5dp"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/login_email" android:paddingTop="5dp" android:paddingLeft="5dp"
+            android:paddingRight="5dp" android:layout_below="@id/login_email_label"/>
+    <TextView
+            android:text="@string/privacy_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/policy"
+            android:layout_below="@id/login_email" android:paddingLeft="10dp"
+            android:paddingRight="10dp" android:paddingBottom="5dp"/>
+    <View
+            android:id="@+id/divider"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:layout_below="@id/policy" android:layout_centerHorizontal="true"/>
+    <Button
+            android:text="@string/privacy_xemplar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/button" android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp" android:layout_marginRight="2.5dp"
+            android:layout_alignParentLeft="true" android:layout_toLeftOf="@id/divider"
+            android:layout_below="@id/policy" android:onClick="policyX"/>
+    <Button
+            android:text="@string/privacy_unity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/button2" android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp" android:layout_marginLeft="2.5dp" android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/divider" android:layout_below="@id/policy" android:onClick="policyU"/>
+    <CheckBox
+            android:text="@string/accept_unity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/accept_unity"
+            android:layout_below="@id/accept_xemplar" android:paddingLeft="5dp"
+            android:paddingRight="5dp" android:layout_marginTop="5dp"/>
+    <CheckBox
+            android:text="@string/accept_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/accept_age" android:layout_below="@id/accept_unity"
+            android:paddingLeft="5dp" android:paddingRight="5dp" android:layout_marginTop="5dp"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/error" android:paddingTop="5dp"
+            android:paddingLeft="5dp" android:paddingRight="5dp" android:paddingBottom="5dp"
+            android:layout_below="@id/accept_age" android:textColor="#D32F2F"/>
+    <CheckBox
+            android:text="@string/accept_xemplar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/accept_xemplar" android:layout_below="@id/button2"
+            android:paddingLeft="5dp" android:paddingRight="5dp" android:layout_marginTop="5dp"/>
+    <Button
+            android:text="@string/check_for_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/form_action" android:layout_below="@id/error"
+            android:onClick="formSubmit"/>
+</RelativeLayout>

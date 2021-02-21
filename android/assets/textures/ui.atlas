@@ -1,0 +1,79 @@
+
+ui.png
+size: 2048,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+IconsButton
+  rotate: false
+  xy: 0, 272
+  size: 82, 90
+  split: 27, 27, 30, 29
+  orig: 82, 90
+  offset: 0, 0
+  index: -1
+TextButton
+  rotate: false
+  xy: 0, 192
+  size: 80, 80
+  split: 26, 27, 26, 27
+  pad: 0, 0, 12, 10
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+back
+  rotate: false
+  xy: 0, 64
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+credit
+  rotate: false
+  xy: 274, 298
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+music
+  rotate: false
+  xy: 146, 298
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+off
+  rotate: false
+  xy: 210, 298
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+play
+  rotate: false
+  xy: 0, 0
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+settings
+  rotate: false
+  xy: 0, 128
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sounds
+  rotate: false
+  xy: 82, 298
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+start_title
+  rotate: false
+  xy: 0, 362
+  size: 2048, 512
+  orig: 2048, 512
+  offset: 0, 0
+  index: -1

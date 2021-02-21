@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:onClick="formSubmit">
+
+    <TextView
+            android:text="@string/login_user_help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/login_user_label" android:paddingTop="5dp"
+            android:paddingLeft="5dp" android:paddingRight="5dp"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName|text"
+            android:ems="10"
+            android:id="@+id/login_user" android:layout_below="@id/login_user_label"
+            android:paddingTop="5dp" android:paddingLeft="5dp" android:paddingRight="5dp"/>
+    <TextView
+            android:text="@string/login_pass_help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/login_pass_label"
+            android:layout_below="@id/login_user" android:paddingTop="5dp" android:paddingLeft="5dp"
+            android:paddingRight="5dp"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text|textPassword"
+            android:ems="10"
+            android:id="@+id/login_pass" android:layout_below="@id/login_pass_label" android:paddingTop="5dp"
+            android:paddingLeft="5dp" android:paddingRight="5dp"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/error" android:layout_below="@id/login_pass"
+            android:paddingTop="5dp" android:paddingLeft="5dp" android:paddingRight="5dp" android:textColor="#D32F2F"/>
+    <Button
+            android:text="@string/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/form_action" android:layout_below="@id/error"
+            android:onClick="formSubmit"/>
+</RelativeLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <TextView
+            android:text="@string/xgh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textView"
+            android:gravity="center|clip_vertical|center_horizontal" android:textSize="28sp"
+            android:fontFamily="@font/museo" android:background="@color/app_black"
+            android:textColor="@color/app_white" android:padding="10dp"/>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:layout_below="@id/textView"
+            android:layout_alignParentLeft="true" android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true" android:id="@+id/content"/>
+</RelativeLayout>

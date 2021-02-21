@@ -1,0 +1,23 @@
+<resources>
+
+    <style name="GdxTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="android:windowBackground">@color/app_white</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:textViewStyle">@style/MuseoTextViewStyle</item>
+        <item name="buttonStyle">@style/MuseoButtonStyle</item>
+    </style>
+
+    <style name="MuseoTextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/museo</item>
+        <item name="android:colorForeground">@color/app_black</item>
+    </style>
+
+    <style name="MuseoButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:fontFamily">@font/museo</item>
+    </style>
+
+</resources>
