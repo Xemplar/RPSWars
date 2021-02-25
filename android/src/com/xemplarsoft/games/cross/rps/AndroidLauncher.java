@@ -13,11 +13,11 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class AndroidLauncher extends AndroidApplication implements IUnityAdsListener, AdProvider, NetworkProvider {
+public class AndroidLauncher extends AndroidApplication implements IUnityAdsListener, AdProvider {
 	private AndroidApplicationConfiguration config;
-	private String unityGameID = "3892815";
-	private String placementId = "video";
-	private boolean testMode = false;
+	private String unityGameID = "4021323";
+	private String placementId = "Interstitial_Android";
+	private boolean testMode = true;
 	private Wars wars;
 
 	protected void onCreate (Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class AndroidLauncher extends AndroidApplication implements IUnityAdsList
 		config = new AndroidApplicationConfiguration();
 		config.hideStatusBar = true;
 		config.useImmersiveMode = true;
-		wars = new Wars(MainActivity.requester, this, this);
+		wars = new Wars(this);
 
 		UnityAds.addListener(this);
 		UnityAds.initialize(this.getContext(), unityGameID, testMode);
@@ -69,27 +69,6 @@ public class AndroidLauncher extends AndroidApplication implements IUnityAdsList
 
 	public void onUnityAdsError(UnityAds.UnityAdsError error, String message) {
 
-	}
-
-	public String getIPAddress() {
-		return NetworkUtils.getIPAddress(true);
-	}
-
-	public void sendBroadcast(String data){
-		StrictMode.ThreadPolicy policy = new   StrictMode.ThreadPolicy.Builder().permitAll().build();
-		StrictMode.setThreadPolicy(policy);
-
-		try {
-			InetAddress address = NetworkUtils.getBroadcastAddress(this);
-			DatagramSocket socket = new DatagramSocket();
-			socket.setBroadcast(true);
-			byte[] sendData = data.getBytes();
-			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, address, Wars.PORT);
-			socket.send(sendPacket);
-			System.out.println(getClass().getName() + "Broadcast packet sent to: " + address.getHostAddress());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void displayAd() {
