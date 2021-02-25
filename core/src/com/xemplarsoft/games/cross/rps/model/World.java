@@ -18,6 +18,10 @@ public class World {
         entities.removeValue(e, true);
     }
     
+    public void clear(){
+        entities.clear();
+    }
+    
     public void render(SpriteBatch batch){
         for(Entity e : entities){
             e.render(batch);
@@ -34,7 +38,10 @@ public class World {
             }
             e.update(delta);
         }
-        
+        for(Entity e : killed){
+            if(!(e instanceof Unit)) continue;
+            Unit p = (Unit) e;
+        }
         entities.removeAll(killed, true);
         killed.clear();
     }

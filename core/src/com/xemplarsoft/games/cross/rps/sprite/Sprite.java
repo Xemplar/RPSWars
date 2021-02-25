@@ -1,4 +1,4 @@
-package com.xemplarsoft.games.cross.rps.model;
+package com.xemplarsoft.games.cross.rps.sprite;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -10,6 +10,7 @@ public class Sprite {
         this.tex = region;
     }
     protected Sprite(){}
+    public void update(float delta){}
     
     public TextureRegion getTex(){
         return tex;

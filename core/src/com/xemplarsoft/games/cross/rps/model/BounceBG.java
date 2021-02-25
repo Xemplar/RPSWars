@@ -3,11 +3,12 @@ package com.xemplarsoft.games.cross.rps.model;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.xemplarsoft.games.cross.rps.screens.MenuScreen;
+import com.xemplarsoft.games.cross.rps.sprite.Sprite;
 
 public class BounceBG extends Entity{
     private Vector2 vel;
     public BounceBG(TextureRegion bg, float width, float height){
-        super(bg, 0, 0, width, height);
+        super(new Sprite(bg), 0, 0, width, height);
         vel = new Vector2(1, 1);
     }
 

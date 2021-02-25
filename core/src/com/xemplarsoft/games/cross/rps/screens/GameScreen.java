@@ -1,24 +1,35 @@
 package com.xemplarsoft.games.cross.rps.screens;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.xemplarsoft.games.cross.rps.Wars;
+import com.xemplarsoft.games.cross.rps.model.BasicUnit;
+import com.xemplarsoft.games.cross.rps.model.Team;
+import com.xemplarsoft.games.cross.rps.model.World;
 import com.xemplarsoft.utils.xwt.ScreenAdapter;
 
 public class GameScreen extends ScreenAdapter{
-    public static final float CAM_HEIGHT = 8F, CAM_WIDTH_MIN = 11F, CAM_WIDTH_MAX = 20F;
+    public static final float CAM_WIDTH = 18F, CAM_HEIGHT_MIN = 22F, CAM_HEIGHT_MAX = 36F;
     public static long $_GLOBAL_CLOCK = 0L;
-    public static float CAM_WIDTH;
+    public static float CAM_HEIGHT;
     public static boolean runAd;
+    public final World world;
 
     public GameScreen(){
-        cam = new OrthographicCamera(CAM_WIDTH_MIN, CAM_HEIGHT);
-        vp = new ExtendViewport(CAM_WIDTH_MIN, CAM_HEIGHT, CAM_WIDTH_MAX, CAM_HEIGHT, cam);
+        cam = new OrthographicCamera(CAM_WIDTH, CAM_HEIGHT_MAX);
+        vp = new ExtendViewport(CAM_WIDTH, CAM_HEIGHT_MIN, CAM_WIDTH, CAM_HEIGHT_MAX, cam);
         USE_HUD_UNITS = false;
+        
+        world = new World();
+        
     }
 
     public void renderSelf(float delta) {
         $_GLOBAL_CLOCK++;
+        
+        world.update(delta);
+        world.render(batch);
         
         if(runAd){
             runAd = false;
@@ -27,19 +38,29 @@ public class GameScreen extends ScreenAdapter{
     }
 
     public void resizeSelf(int width, int height) {
-        CAM_WIDTH = (float) width/height * CAM_HEIGHT;
+        CAM_HEIGHT = (float) height/width * CAM_WIDTH;
 
         vp.update(width, height, false);
-        cam.position.set(CAM_WIDTH / 4F, CAM_HEIGHT / 2F, 0);
+        cam.position.set(CAM_WIDTH / 2, CAM_HEIGHT / 2F, 0);
         cam.update();
+        world.clear();
+    
+        RandomXS128 ran = new RandomXS128();
+    
+        for(int i = 1; i < 4; i++){
+            for(int j = 0; j < 100; j++){
+                float x = ran.nextFloat() * CAM_WIDTH;
+                float y = ran.nextFloat() * CAM_HEIGHT;
+            
+                world.spawn(new BasicUnit(Team.fromID(i), x, y));
+            }
+        }
 
         generateUI();
     }
 
     private void generateUI(){
         removeAllUI();
-
-        
     }
 
     public void pause() {

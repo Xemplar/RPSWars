@@ -42,7 +42,7 @@ public class Wars extends Game {
 		menu = new MenuScreen(this);
 		game = new GameScreen();
 
-		setScreen(menu);
+		setScreen(game);
 	}
 
 	private void loadFonts(){

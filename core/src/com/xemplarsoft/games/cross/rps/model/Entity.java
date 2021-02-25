@@ -3,6 +3,7 @@ package com.xemplarsoft.games.cross.rps.model;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.xemplarsoft.games.cross.rps.sprite.Sprite;
 
 public abstract class Entity {
     public static final float SPEED = 1F;
@@ -14,6 +15,7 @@ public abstract class Entity {
     public Entity(Sprite sprite, float x, float y, float width, float height){
         this.sprite = sprite;
         this.pos = new Vector2(x, y);
+        this.vel = new Vector2(0, 0);
         this.width = width;
         this.height = height;
     }
@@ -89,9 +91,12 @@ public abstract class Entity {
         return new Rectangle(pos.x - width / 2, pos.y - height / 2, width, height);
     }
     
-    public Rectangle getBounds(float delta){
-        Vector2 pos = this.pos.cpy().mulAdd(vel, delta);
+    public Rectangle getBounds(){
         return new Rectangle(pos.x - width / 2, pos.y - height / 2, width, height);
+    }
+    
+    public void kill(){
+        this.dead = true;
     }
     
     public void update(float delta){
@@ -101,6 +106,16 @@ public abstract class Entity {
     public boolean isDead(){
         return dead;
     }
+    
+    public boolean isCollidable(){
+        return false;
+    }
+    
+    public boolean isTouchable(){
+        return false;
+    }
+    
+    public void onTouch(Entity e){}
     
     public void render(SpriteBatch b){
         b.draw(sprite.getTex(), pos.x, pos.y, 0.5F, 0.5F, width, height, 1, 1, vel.angleDeg());
