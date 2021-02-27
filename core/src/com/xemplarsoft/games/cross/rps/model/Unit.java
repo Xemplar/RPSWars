@@ -16,6 +16,9 @@ public abstract class Unit extends Entity{
     public boolean isTouchable() {
         return true;
     }
+    public boolean isCollidable() {
+        return true;
+    }
     
     public void onTouch(Entity e) {
         if(!(e instanceof Unit)) return;
@@ -32,7 +35,7 @@ public abstract class Unit extends Entity{
     public abstract void convert(Team team);
     public abstract String getName();
     
-    public void update(float delta) {
-        super.update(delta);
+    public void update(float delta, World w) {
+        super.update(delta, w);
     }
 }

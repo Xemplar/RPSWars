@@ -6,6 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.xemplarsoft.games.cross.rps.sprite.Sprite;
 
 public abstract class Entity {
+    public static final Controller DEFAULT_CONTROLLER = new CollisionController();
+    public static long ENTITY_COUNTER = 0;
     public static final float SPEED = 1F;
     protected float width, height, rot;
     protected Vector2 pos, vel;
@@ -13,8 +15,11 @@ public abstract class Entity {
     protected boolean dead = false;
     
     protected Vector2 target;
+    protected Controller controller;
+    public final long ID;
     
     public Entity(Sprite sprite, float x, float y, float width, float height){
+        ID = ENTITY_COUNTER++;
         this.sprite = sprite;
         this.pos = new Vector2(x, y);
         this.vel = new Vector2(0, 0);
@@ -22,6 +27,7 @@ public abstract class Entity {
         this.height = height;
         
         target = new Vector2(x, y);
+        this.controller = DEFAULT_CONTROLLER;
     }
     
     public void setTarget(Vector2 dest) {
@@ -45,6 +51,8 @@ public abstract class Entity {
         float thetaC = (float) Math.acos(dx / dh);
         
         vel.set(-(float)Math.cos(thetaC) * SPEED, -(float)Math.sin(thetaS) * SPEED);
+    
+        rot = vel.angleDeg();
     }
     
     /*    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *
@@ -55,7 +63,7 @@ public abstract class Entity {
            ◻  ◢◤      ◻ adj = dx
      *     ◻◢◤ θ    90◻
            ◻◻◻◻◻◻◻◻
-     *  Me      dx         θs = sin-1(opp/dh)                                                            *
+     *  Me      dx         θs = sin-1(opp/dh)
                            θc = cos-1(adj/dh)
      *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    */
     
@@ -95,8 +103,10 @@ public abstract class Entity {
         this.dead = true;
     }
     
-    public void update(float delta){
+    public void update(float delta, World w){
         updateVelocity();
+        controller.update(delta, this, w);
+        
         pos = pos.mulAdd(vel, delta);
     }
     
@@ -115,6 +125,6 @@ public abstract class Entity {
     public void onTouch(Entity e){}
     
     public void render(SpriteBatch b){
-        b.draw(sprite.getTex(), pos.x, pos.y, 0.5F, 0.5F, width, height, 1, 1, vel.angleDeg());
+        b.draw(sprite.getTex(), pos.x, pos.y, 0.5F, 0.5F, width, height, 1, 1, rot);
     }
 }

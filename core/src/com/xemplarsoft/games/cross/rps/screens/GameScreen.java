@@ -47,10 +47,17 @@ public class GameScreen extends ScreenAdapter{
         RandomXS128 ran = new RandomXS128();
     
         for(int i = 1; i < 4; i++){
-            for(int j = 0; j < 100; j++){
+            Entity:
+            for(int j = 0; j < 20; j++){
                 float x = ran.nextFloat() * CAM_WIDTH;
                 float y = ran.nextFloat() * CAM_HEIGHT;
                 Unit u = new BasicUnit(Team.fromID(i), x, y);
+                for(Entity e : world.entities){
+                    if(u.getBounds().overlaps(e.getBounds())){
+                        j--;
+                        continue Entity;
+                    }
+                }
                 world.spawn(u);
                 u.setTarget(new Vector2(CAM_WIDTH / 2, CAM_HEIGHT / 2));
             }
@@ -70,11 +77,11 @@ public class GameScreen extends ScreenAdapter{
     public void resume() {
         super.resume();
     }
-
+    
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         int x = (int)(Math.floor((float)screenX / screenWidth * CAM_WIDTH));
         int y = (int)Math.floor((float)(screenHeight - screenY) / screenHeight * CAM_HEIGHT);
-
+        
         for(Entity e : world.entities){
             if(e instanceof BasicUnit){
                 e.setTarget(new Vector2(x, y));
@@ -82,5 +89,18 @@ public class GameScreen extends ScreenAdapter{
         }
         
         return super.touchDown(screenX, screenY, pointer, button);
+    }
+    
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        int x = (int)(Math.floor((float)screenX / screenWidth * CAM_WIDTH));
+        int y = (int)Math.floor((float)(screenHeight - screenY) / screenHeight * CAM_HEIGHT);
+        
+        for(Entity e : world.entities){
+            if(e instanceof BasicUnit){
+                e.setTarget(new Vector2(x, y));
+            }
+        }
+        
+        return super.touchDragged(screenX, screenY, pointer);
     }
 }

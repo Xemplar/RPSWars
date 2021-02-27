@@ -1,6 +1,7 @@
 package com.xemplarsoft.games.cross.rps.model;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 public class World {
@@ -29,24 +30,21 @@ public class World {
     }
     
     public void update(float delta){
-        checkCollisions(delta);
         Array<Entity> killed = new Array<>();
         for(Entity e : entities){
             if(e.isDead()){
                 killed.add(e);
                 continue;
             }
-            e.update(delta);
+            e.update(delta, this);
         }
         for(Entity e : killed){
             if(!(e instanceof Unit)) continue;
-            Unit p = (Unit) e;
+            Unit p = (Unit) e; p.kill();
         }
         entities.removeAll(killed, true);
         killed.clear();
     }
     
-    public void checkCollisions(float delta){
     
-    }
 }

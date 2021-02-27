@@ -17,7 +17,7 @@ android {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "com.xemplarsoft.games.cross.che"
+        applicationId "com.xemplarsoft.games.cross.rps"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 101
@@ -86,7 +86,7 @@ task run(type: Exec) {
     }
 
     def adb = path + "/platform-tools/adb"
-    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.xemplarsoft.games.cross.che/com.xemplarsoft.games.cross.che.AndroidLauncher'
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.xemplarsoft.games.cross.rps/com.xemplarsoft.games.cross.rps.AndroidLauncher'
 }
 
 dependencies {

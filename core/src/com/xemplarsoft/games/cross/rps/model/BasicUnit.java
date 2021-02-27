@@ -8,8 +8,8 @@ public class BasicUnit extends Unit{
         setup(t);
     }
     
-    public void update(float delta) {
-        super.update(delta);
+    public void update(float delta, World w) {
+        super.update(delta, w);
     }
     
     public void convert(Team team) {
