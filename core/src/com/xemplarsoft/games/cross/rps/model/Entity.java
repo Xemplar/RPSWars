@@ -12,56 +12,52 @@ public abstract class Entity {
     protected Sprite sprite;
     protected boolean dead = false;
     
+    protected Vector2 target;
+    
     public Entity(Sprite sprite, float x, float y, float width, float height){
         this.sprite = sprite;
         this.pos = new Vector2(x, y);
         this.vel = new Vector2(0, 0);
         this.width = width;
         this.height = height;
+        
+        target = new Vector2(x, y);
     }
     
-    public void setTarget(Vector2 dest){
+    public void setTarget(Vector2 dest) {
+        this.target = dest;
+    }
+    
+    public void updateVelocity(){
+        if(target.equals(pos)) return;
+        
+        Vector2 dest = target.cpy();
+        
         float dx = this.pos.x - dest.x;
         float dy = this.pos.y - dest.y;
-        if(dx == 0 && dy == 0){
+        if(Math.abs(dx) <= 0.001F && Math.abs(dy) <= 0.001F){
             vel = vel.scl(0);
             return;
         }
-        if(dx == 0){
-            vel.set(0, dy > 0 ? SPEED : -SPEED);
-            return;
-        }
-        if(dy == 0){
-            vel.set(dx > 0 ? SPEED : -SPEED, 0);
-            return;
-        }
-        float offset = 0;
-        if(dx < 0 && dy > 0) offset = 90;
-        if(dx < 0 && dy < 0) offset = 180;
-        if(dx > 0 && dy < 0) offset = 270;
-        
-        dx = Math.abs(dx);
-        dy = Math.abs(dy);
         
         float dh = (float) Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-        float theta = (float) Math.toDegrees(Math.asin(dy / dh));
+        float thetaS = (float) Math.asin(dy / dh);
+        float thetaC = (float) Math.acos(dx / dh);
         
-        theta += offset;
-        theta = (float)Math.toRadians(theta);
-        
-        vel.set((float)Math.cos(theta) * SPEED, (float)Math.sin(theta) * SPEED);
+        vel.set(-(float)Math.cos(thetaC) * SPEED, -(float)Math.sin(thetaS) * SPEED);
     }
     
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-     *              Dest
+    /*    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *
+                    Dest
      *     ◻        ◢◤◻
-     *     ◻      ◢◤  ◻
+           ◻      ◢◤  ◻
      *  dy ◻  dh◢◤    ◻ opp = dy
-     *     ◻  ◢◤      ◻
+           ◻  ◢◤      ◻ adj = dx
      *     ◻◢◤ θ    90◻
-     *     ◻◻◻◻◻◻◻◻ ◻
-     *  Me      dx         θ = sin-1(opp/dh)
-     * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+           ◻◻◻◻◻◻◻◻
+     *  Me      dx         θs = sin-1(opp/dh)                                                            *
+                           θc = cos-1(adj/dh)
+     *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    */
     
     public float distance(Entity e){
         Vector2 diff = this.pos.cpy().sub(e.pos);
@@ -100,6 +96,7 @@ public abstract class Entity {
     }
     
     public void update(float delta){
+        updateVelocity();
         pos = pos.mulAdd(vel, delta);
     }
     
