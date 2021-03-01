@@ -3,10 +3,12 @@ package com.xemplarsoft.games.cross.rps.model;
 import com.xemplarsoft.games.cross.rps.Wars;
 import com.xemplarsoft.games.cross.rps.sprite.Sprite;
 
+import static com.xemplarsoft.games.cross.rps.Wars.*;
+
 public enum Team {
-    A(1, 2, 3, "scissors", "Scissors"),
-    B(2, 3, 1, "paper", "Paper"),
-    C(3, 1, 2, "rock", "Rock");
+    A(A_ID, B_ID, C_ID, "scissors", "Scissors"),
+    B(B_ID, C_ID, A_ID, "paper", "Paper"),
+    C(C_ID, A_ID, B_ID, "rock", "Rock");
     
     public final int id, prey, predator;
     public final String prefix, name;

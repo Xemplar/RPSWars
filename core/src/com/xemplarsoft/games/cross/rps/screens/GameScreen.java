@@ -2,10 +2,13 @@ package com.xemplarsoft.games.cross.rps.screens;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.RandomXS128;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.xemplarsoft.games.cross.rps.Wars;
+import com.xemplarsoft.games.cross.rps.controller.ai.UnitAI;
+import com.xemplarsoft.games.cross.rps.controller.behavior.TeamGroupBehavior;
 import com.xemplarsoft.games.cross.rps.model.*;
+import com.xemplarsoft.games.cross.rps.model.unit.BasicUnit;
+import com.xemplarsoft.games.cross.rps.model.unit.Unit;
 import com.xemplarsoft.utils.xwt.ScreenAdapter;
 
 public class GameScreen extends ScreenAdapter{
@@ -52,6 +55,7 @@ public class GameScreen extends ScreenAdapter{
                 float x = ran.nextFloat() * CAM_WIDTH;
                 float y = ran.nextFloat() * CAM_HEIGHT;
                 Unit u = new BasicUnit(Team.fromID(i), x, y);
+                u.setAI(new UnitAI());
                 for(Entity e : world.entities){
                     if(u.getBounds().overlaps(e.getBounds())){
                         j--;
@@ -59,10 +63,8 @@ public class GameScreen extends ScreenAdapter{
                     }
                 }
                 world.spawn(u);
-                u.setTarget(new Vector2(CAM_WIDTH / 2, CAM_HEIGHT / 2));
             }
         }
-
         generateUI();
     }
 
@@ -82,24 +84,12 @@ public class GameScreen extends ScreenAdapter{
         int x = (int)(Math.floor((float)screenX / screenWidth * CAM_WIDTH));
         int y = (int)Math.floor((float)(screenHeight - screenY) / screenHeight * CAM_HEIGHT);
         
-        for(Entity e : world.entities){
-            if(e instanceof BasicUnit){
-                e.setTarget(new Vector2(x, y));
-            }
-        }
-        
         return super.touchDown(screenX, screenY, pointer, button);
     }
     
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         int x = (int)(Math.floor((float)screenX / screenWidth * CAM_WIDTH));
         int y = (int)Math.floor((float)(screenHeight - screenY) / screenHeight * CAM_HEIGHT);
-        
-        for(Entity e : world.entities){
-            if(e instanceof BasicUnit){
-                e.setTarget(new Vector2(x, y));
-            }
-        }
         
         return super.touchDragged(screenX, screenY, pointer);
     }

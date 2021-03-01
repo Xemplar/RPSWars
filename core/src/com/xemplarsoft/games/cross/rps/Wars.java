@@ -11,6 +11,8 @@ import com.xemplarsoft.games.cross.rps.screens.MenuScreen;
 
 public class Wars extends Game {
 	//public static final String TEST_DB_URL = "https://xemplarsoft.com/testdb/TestDBHook";
+	public static final int A_ID = 1, B_ID = 2, C_ID = 3;
+	
 	public static final String APP_VERSION = "0.1.1";
 	public static final String APP_ENCLAVE = "Alpha";
 	public static final String APPCODE = "wars";

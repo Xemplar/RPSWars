@@ -3,16 +3,22 @@ package com.xemplarsoft.games.cross.rps.model;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.xemplarsoft.games.cross.rps.controller.AIController;
+import com.xemplarsoft.games.cross.rps.controller.CollisionController;
+import com.xemplarsoft.games.cross.rps.controller.Controller;
+import com.xemplarsoft.games.cross.rps.controller.ai.AI;
+import com.xemplarsoft.games.cross.rps.controller.ai.AbstractAI;
 import com.xemplarsoft.games.cross.rps.sprite.Sprite;
 
 public abstract class Entity {
-    public static final Controller DEFAULT_CONTROLLER = new CollisionController();
+    public static final com.xemplarsoft.games.cross.rps.controller.Controller DEFAULT_CONTROLLER = new CollisionController();
     public static long ENTITY_COUNTER = 0;
     public static final float SPEED = 1F;
-    protected float width, height, rot;
-    protected Vector2 pos, vel;
     protected Sprite sprite;
     protected boolean dead = false;
+    
+    public float width, height, rot;
+    public Vector2 pos, vel;
     
     protected Vector2 target;
     protected Controller controller;
@@ -28,6 +34,23 @@ public abstract class Entity {
         
         target = new Vector2(x, y);
         this.controller = DEFAULT_CONTROLLER;
+    }
+    
+    public void setController(Controller controller){
+        this.controller = controller;
+    }
+    
+    public void setAI(AI ai){
+        this.controller = new AIController(ai, this);
+    }
+    
+    public boolean isIdle(){
+        if(this.controller instanceof AIController) return ((AIController) this.controller).isIdle();
+        return false;
+    }
+    
+    protected void provisionTask(String name, Object... args){
+        if(this.controller instanceof AIController) ((AIController) this.controller).provisionTask(name, args);
     }
     
     public void setTarget(Vector2 dest) {
