@@ -31,6 +31,8 @@ public class TeamGroupBehavior implements Behavior{
             }
         }
         if(closest == null) return true;
+        if(Integer.parseInt(args[1].toString()) <= d) return true;
+        
         e.setTarget(closest.pos);
         
         return false;

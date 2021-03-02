@@ -57,7 +57,7 @@ public abstract class Entity {
         this.target = dest;
     }
     
-    public void updateVelocity(){
+    public void updateVelocity(float delta){
         if(target.equals(pos)) return;
         
         Vector2 dest = target.cpy();
@@ -75,7 +75,9 @@ public abstract class Entity {
         
         vel.set(-(float)Math.cos(thetaC) * SPEED, -(float)Math.sin(thetaS) * SPEED);
     
-        rot = vel.angleDeg();
+        float diff = Math.abs(rot - vel.angleDeg());
+        if(rot < vel.angleDeg() && diff > 5) rot += delta * 15F;
+        if(rot > vel.angleDeg() && diff > 5) rot -= delta * 15F;
     }
     
     /*    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *
@@ -127,7 +129,8 @@ public abstract class Entity {
     }
     
     public void update(float delta, World w){
-        updateVelocity();
+        sprite.update(delta);
+        updateVelocity(delta);
         controller.update(delta, this, w);
         
         pos = pos.mulAdd(vel, delta);

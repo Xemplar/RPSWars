@@ -1,6 +1,7 @@
 package com.xemplarsoft.games.cross.rps.model;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.xemplarsoft.games.cross.rps.controller.ai.Task;
 import com.xemplarsoft.games.cross.rps.model.unit.Unit;
@@ -10,15 +11,16 @@ import static com.xemplarsoft.games.cross.rps.Wars.*;
 public class World {
     public Array<Entity> entities = new Array<>();
     public Array<Task> TASKS_A, TASKS_B, TASKS_C;
+    public ShapeRenderer debug;
     
     public World(){
         TASKS_A = new Array<>();
         TASKS_B = new Array<>();
         TASKS_C = new Array<>();
     
-        TASKS_A.add(new Task("group", 6, 2), new Task("attack", 6));
-        TASKS_B.add(new Task("group", 6, 2), new Task("attack", 6));
-        TASKS_C.add(new Task("group", 6, 2), new Task("attack", 6));
+        TASKS_A.add(new Task("group", 5, 3), new Task("attack", 6));
+        TASKS_B.add(new Task("group", 5, 3), new Task("attack", 6));
+        TASKS_C.add(new Task("group", 5, 3), new Task("attack", 6));
     }
     
     public void spawn(Entity e){
@@ -39,7 +41,8 @@ public class World {
         }
     }
     
-    public void update(float delta){
+    public void update(float delta, ShapeRenderer debug){
+        if(this.debug != debug) this.debug = debug;
         refreshTeamTasks();
         
         Array<Entity> killed = new Array<>();
@@ -51,8 +54,8 @@ public class World {
             e.update(delta, this);
         }
         for(Entity e : killed){
-            if(!(e instanceof com.xemplarsoft.games.cross.rps.model.unit.Unit)) continue;
-            com.xemplarsoft.games.cross.rps.model.unit.Unit p = (Unit) e; p.kill();
+            if(!(e instanceof Unit)) continue;
+            Unit p = (Unit) e; p.kill();
         }
         entities.removeAll(killed, true);
         killed.clear();

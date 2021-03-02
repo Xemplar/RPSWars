@@ -11,13 +11,23 @@ import static com.xemplarsoft.games.cross.rps.screens.GameScreen.CAM_WIDTH;
 public class CollisionController implements Controller {
     public void update(float delta, Entity e, World w) {
         Rectangle f = e.getFutureBounds(delta);
-        if(f.x < 0 && e.vel.x < 0) e.vel.x = 0;
-        if(f.x > (CAM_WIDTH - f.width) && e.vel.x > 0) e.vel.x = 0;
+        if(f.x < 0 && e.vel.x < 0) {
+            e.vel.x = 0;
+            e.vel.y = e.vel.y < 0 ? -1 : 1;
+        }
+        if(f.x >= ((CAM_WIDTH - 1F) - f.width) && e.vel.x > 0){
+            e.vel.x = 0;
+            e.vel.y = e.vel.y < 0 ? -1 : 1;
+        }
     
-        if(f.y < 0 && e.vel.y < 0) e.vel.y = 0;
-        if(f.y > (CAM_HEIGHT - f.height) && e.vel.y > 0) e.vel.y = 0;
-        
-        if(!e.isCollidable()) return;
+        if(f.y < 0 && e.vel.y < 0){
+            e.vel.y = 0;
+            if(e.vel.x != 0) e.vel.x = e.vel.x < 0 ? -1 : 1;
+        }
+        if(f.y >= ((CAM_HEIGHT - 1F) - f.height) && e.vel.y > 0){
+            e.vel.y = 0;
+            if(e.vel.x != 0) e.vel.x = e.vel.x < 0 ? -1 : 1;
+        }
         
         Array<Entity> close = new Array<>();
     
@@ -50,6 +60,7 @@ public class CollisionController implements Controller {
             }
         }
     
+        if(!e.isCollidable()) return;
         e.vel.scl(colX ? 0 : 1, colY ? 0 : 1);
     }
 }

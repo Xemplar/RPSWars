@@ -2,6 +2,7 @@ package com.xemplarsoft.games.cross.rps.model;
 
 import com.xemplarsoft.games.cross.rps.Wars;
 import com.xemplarsoft.games.cross.rps.sprite.Sprite;
+import com.xemplarsoft.games.cross.rps.sprite.SpriteA;
 
 import static com.xemplarsoft.games.cross.rps.Wars.*;
 
@@ -12,7 +13,7 @@ public enum Team {
     
     public final int id, prey, predator;
     public final String prefix, name;
-    Team(int id, int prey, int predator, String prefix, String name){
+    Team(int id, int predator, int prey, String prefix, String name){
         this.id = id;
         this.prey = prey;
         this.predator = predator;
@@ -30,13 +31,17 @@ public enum Team {
     }
     
     public Sprite getSprite(){
-        return new Sprite(Wars.pr("player" + id));
+        switch(id){
+            default: return S_SCI;
+            case B_ID: return S_PAP;
+            case C_ID: return S_ROC;
+        }
     }
     
     public static Team fromID(int id){
         for(Team t : Team.values()){
             if(t.id == id) return t;
         }
-        return null;
+        return A;
     }
 }

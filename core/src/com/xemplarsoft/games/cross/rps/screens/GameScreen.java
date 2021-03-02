@@ -1,11 +1,11 @@
 package com.xemplarsoft.games.cross.rps.screens;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.xemplarsoft.games.cross.rps.Wars;
 import com.xemplarsoft.games.cross.rps.controller.ai.UnitAI;
-import com.xemplarsoft.games.cross.rps.controller.behavior.TeamGroupBehavior;
 import com.xemplarsoft.games.cross.rps.model.*;
 import com.xemplarsoft.games.cross.rps.model.unit.BasicUnit;
 import com.xemplarsoft.games.cross.rps.model.unit.Unit;
@@ -17,6 +17,7 @@ public class GameScreen extends ScreenAdapter{
     public static float CAM_HEIGHT;
     public static boolean runAd;
     public final World world;
+    public final ShapeRenderer debug;
 
     public GameScreen(){
         cam = new OrthographicCamera(CAM_WIDTH, CAM_HEIGHT_MAX);
@@ -24,13 +25,19 @@ public class GameScreen extends ScreenAdapter{
         USE_HUD_UNITS = false;
         
         world = new World();
-        
+        debug = new ShapeRenderer();
     }
 
     public void renderSelf(float delta) {
         $_GLOBAL_CLOCK++;
+        batch.end();
         
-        world.update(delta);
+        debug.setProjectionMatrix(cam.combined);
+        debug.begin(ShapeRenderer.ShapeType.Line);
+        world.update(delta, debug);
+        debug.end();
+        
+        batch.begin();
         world.render(batch);
         
         if(runAd){
@@ -49,11 +56,12 @@ public class GameScreen extends ScreenAdapter{
     
         RandomXS128 ran = new RandomXS128();
     
+        final float padding = 1F;
         for(int i = 1; i < 4; i++){
             Entity:
             for(int j = 0; j < 20; j++){
-                float x = ran.nextFloat() * CAM_WIDTH;
-                float y = ran.nextFloat() * CAM_HEIGHT;
+                float x = ran.nextFloat() * (CAM_WIDTH - padding*2) + padding;
+                float y = ran.nextFloat() * (CAM_HEIGHT - padding*2) + padding;
                 Unit u = new BasicUnit(Team.fromID(i), x, y);
                 u.setAI(new UnitAI());
                 for(Entity e : world.entities){

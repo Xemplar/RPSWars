@@ -6,15 +6,22 @@ filter: Nearest,Nearest
 repeat: none
 IconsButton
   rotate: false
-  xy: 0, 272
+  xy: 0, 128
   size: 82, 90
   split: 27, 27, 30, 29
   orig: 82, 90
   offset: 0, 0
   index: -1
+Repeat_texture
+  rotate: false
+  xy: 0, 218
+  size: 159, 254
+  orig: 159, 254
+  offset: 0, 0
+  index: -1
 TextButton
   rotate: false
-  xy: 0, 192
+  xy: 159, 392
   size: 80, 80
   split: 26, 27, 26, 27
   pad: 0, 0, 12, 10
@@ -23,56 +30,56 @@ TextButton
   index: -1
 back
   rotate: false
-  xy: 0, 64
+  xy: 239, 408
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 credit
   rotate: false
-  xy: 274, 298
+  xy: 303, 408
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 music
   rotate: false
-  xy: 146, 298
+  xy: 159, 328
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 off
   rotate: false
-  xy: 210, 298
+  xy: 0, 0
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 play
   rotate: false
-  xy: 0, 0
+  xy: 159, 264
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 settings
   rotate: false
-  xy: 0, 128
+  xy: 82, 154
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 sounds
   rotate: false
-  xy: 82, 298
+  xy: 0, 64
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 start_title
   rotate: false
-  xy: 0, 362
+  xy: 0, 472
   size: 2048, 512
   orig: 2048, 512
   offset: 0, 0
