@@ -40,7 +40,11 @@ public final class CreditsScreen extends ScreenAdapter {
     "n40000c6:",
     "t20000c6:Server Mods",
     "n40000c6:James (@DeFy#9182)",
-    "n40000c6:@spyro12767#4955",
+    "n40000c6:spyro12767",
+    "n40000c6:",
+    "t20000c6:Discord Lurkers",
+    "n40000c6:James (@DeFy#9182)",
+    "n40000c6:spyro12767",
     "n40000c6:"
     };
     
@@ -58,13 +62,6 @@ public final class CreditsScreen extends ScreenAdapter {
         vp = new ExtendViewport(CAM_WIDTH, CAM_HEIGHT_MIN, CAM_WIDTH, CAM_HEIGHT_MAX, cam);
         USE_HUD_UNITS = false;
         this.font = Wars.fnt_text;
-        
-        String[] nCred = new String[CREDITS.length];
-        for(int i = 0; i < nCred.length; i++){
-            nCred[CREDITS.length - (i + 1)] = CREDITS[i];
-        }
-        
-        //CREDITS = nCred;
     }
     
     protected float usedY;
