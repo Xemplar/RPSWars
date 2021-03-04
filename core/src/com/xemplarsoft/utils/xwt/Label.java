@@ -73,7 +73,7 @@ public class Label extends AbstractComponent {
     }
 
     public void render(SpriteBatch batch) {
-        render(batch, font == null ? Wars.font : font);
+        render(batch, font == null ? Wars.fnt_text : font);
     }
 
     public void render(SpriteBatch batch, BitmapFont font) {

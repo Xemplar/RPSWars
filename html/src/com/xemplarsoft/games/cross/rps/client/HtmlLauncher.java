@@ -14,16 +14,13 @@ import com.google.gwt.user.client.ui.Panel;
 import com.xemplarsoft.games.cross.rps.Wars;
 import com.xemplarsoft.games.cross.rps.NoneAdProvider;
 
-public class HtmlLauncher extends GwtApplication implements HTMLLoginListener{
+public class HtmlLauncher extends GwtApplication{
     public GwtApplicationConfiguration getConfig () {
         return new GwtApplicationConfiguration(512, 256);
     }
 
     public ApplicationListener createApplicationListener () {
-        HTMLTestDBApplication testdb = new HTMLTestDBApplication(this);
-        testdb.login();
-
-        return new Wars(testdb, testdb.getTestDB(), new NoneAdProvider(), null);
+        return new Wars(new NoneAdProvider());
     }
 
     public Preloader.PreloaderCallback getPreloaderCallback() {
@@ -52,10 +49,5 @@ public class HtmlLauncher extends GwtApplication implements HTMLLoginListener{
                 });
             }
         });
-    }
-
-    @Override
-    public void loggedIn(boolean worked, String message) {
-        //TODO Implement login
     }
 }

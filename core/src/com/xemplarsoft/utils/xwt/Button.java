@@ -17,9 +17,6 @@ public class Button extends Label implements Interfacable {
         super(x, y, text);
         this.width = width;
         this.height = height;
-
-        this.bg_none = Wars.ur("button_none");
-        this.bg_hold = Wars.ur("button_held");
     }
 
     public void setNormalBG(TextureRegion t){
@@ -37,7 +34,7 @@ public class Button extends Label implements Interfacable {
         setPressedBG(pressed);
     }
     public void render(SpriteBatch batch){
-        render(batch, Wars.font);
+        render(batch, Wars.fnt_text);
     }
 
     public void render(SpriteBatch batch, BitmapFont font){

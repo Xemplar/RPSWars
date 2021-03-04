@@ -12,7 +12,7 @@ import com.xemplarsoft.games.cross.rps.model.unit.Unit;
 import com.xemplarsoft.utils.xwt.ScreenAdapter;
 
 public class GameScreen extends ScreenAdapter{
-    public static final float CAM_WIDTH = 18F, CAM_HEIGHT_MIN = 22F, CAM_HEIGHT_MAX = 36F;
+    public static final float CAM_WIDTH = 18F, CAM_HEIGHT_MIN = 22F, CAM_HEIGHT_MAX = 40F;
     public static long $_GLOBAL_CLOCK = 0L;
     public static float CAM_HEIGHT;
     public static boolean runAd;
@@ -59,7 +59,7 @@ public class GameScreen extends ScreenAdapter{
         final float padding = 1F;
         for(int i = 1; i < 4; i++){
             Entity:
-            for(int j = 0; j < 20; j++){
+            for(int j = 0; j < 15; j++){
                 float x = ran.nextFloat() * (CAM_WIDTH - padding*2) + padding;
                 float y = ran.nextFloat() * (CAM_HEIGHT - padding*2) + padding;
                 Unit u = new BasicUnit(Team.fromID(i), x, y);

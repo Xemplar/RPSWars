@@ -47,7 +47,7 @@ public class SwitchButton extends Label implements Interfacable {
     public void render(SpriteBatch batch){
         if(visible) {
             batch.draw(state ? on : off, x, y - height, width, height);
-            Wars.font.draw(batch, text, x + 0.1F, y, width, alignment, true);
+            Wars.fnt_text.draw(batch, text, x + 0.1F, y, width, alignment, true);
         }
     }
 

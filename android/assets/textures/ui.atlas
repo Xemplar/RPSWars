@@ -1,86 +1,118 @@
 
 ui.png
-size: 2048,1024
+size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-IconsButton
-  rotate: false
-  xy: 0, 128
-  size: 82, 90
-  split: 27, 27, 30, 29
-  orig: 82, 90
-  offset: 0, 0
-  index: -1
-Repeat_texture
-  rotate: false
-  xy: 0, 218
-  size: 159, 254
-  orig: 159, 254
-  offset: 0, 0
-  index: -1
-TextButton
-  rotate: false
-  xy: 159, 392
-  size: 80, 80
-  split: 26, 27, 26, 27
-  pad: 0, 0, 12, 10
-  orig: 80, 80
-  offset: 0, 0
-  index: -1
 back
   rotate: false
-  xy: 239, 408
+  xy: 1600, 1984
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+bg
+  rotate: false
+  xy: 0, 1024
+  size: 1024, 1024
+  orig: 1024, 1024
+  offset: 0, 0
+  index: -1
+btn_action
+  rotate: false
+  xy: 1024, 1372
+  size: 43, 82
+  orig: 43, 82
+  offset: 0, 0
+  index: 1
+btn_action
+  rotate: false
+  xy: 1664, 1966
+  size: 16, 82
+  orig: 16, 82
+  offset: 0, 0
+  index: 0
+btn_action
+  rotate: false
+  xy: 1536, 1774
+  size: 16, 82
+  orig: 16, 82
+  offset: 0, 0
+  index: 2
+btn_text
+  rotate: false
+  xy: 1024, 1454
+  size: 50, 82
+  orig: 50, 82
+  offset: 0, 0
+  index: 1
+btn_text
+  rotate: false
+  xy: 1024, 1290
+  size: 16, 82
+  orig: 16, 82
+  offset: 0, 0
+  index: 0
+btn_text
+  rotate: false
+  xy: 1680, 1966
+  size: 16, 82
+  orig: 16, 82
+  offset: 0, 0
+  index: 2
 credit
   rotate: false
-  xy: 303, 408
+  xy: 1600, 1920
   size: 64, 64
   orig: 64, 64
+  offset: 0, 0
+  index: -1
+logo
+  rotate: false
+  xy: 1024, 1536
+  size: 512, 512
+  orig: 512, 512
   offset: 0, 0
   index: -1
 music
   rotate: false
-  xy: 159, 328
+  xy: 1536, 1920
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 off
   rotate: false
-  xy: 0, 0
+  xy: 1536, 1856
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 play
   rotate: false
-  xy: 159, 264
+  xy: 1138, 1472
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 settings
   rotate: false
-  xy: 82, 154
+  xy: 1074, 1472
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 sounds
   rotate: false
-  xy: 0, 64
+  xy: 1536, 1984
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 start_title
   rotate: false
-  xy: 0, 472
-  size: 2048, 512
-  orig: 2048, 512
+  xy: 0, 0
+  size: 1024, 1024
+  orig: 1024, 1024
   offset: 0, 0
   index: -1

@@ -1,5 +1,6 @@
 package com.xemplarsoft.games.cross.rps.model.unit;
 
+import com.xemplarsoft.games.cross.rps.Wars;
 import com.xemplarsoft.games.cross.rps.model.Entity;
 import com.xemplarsoft.games.cross.rps.model.Team;
 import com.xemplarsoft.games.cross.rps.model.World;
@@ -8,7 +9,7 @@ import com.xemplarsoft.games.cross.rps.sprite.Sprite;
 public abstract class Unit extends Entity {
     protected Team team;
     public Unit(Sprite sprite, float x, float y){
-        super(sprite, x, y, 1, 1);
+        super(sprite, x, y, 1.25F, 1.25F);
     }
     
     public void setup(Team team){
@@ -28,6 +29,7 @@ public abstract class Unit extends Entity {
         Unit p = (Unit) e;
         if(team.isPrey(p.team)){
             this.convert(p.team);
+            Wars.playSound(p.team);
         }
     }
     

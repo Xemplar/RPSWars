@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
@@ -22,6 +23,7 @@ public abstract class ScreenAdapter implements Screen, InputProcessor, Component
     protected Array<Interfacable> interact = new Array<Interfacable>();
 
     protected SpriteBatch batch;
+    protected Color clear = new Color(0.1F, 0.1F, 0.1F, 1);
     public static float WORLD_ASPECT;
     protected Camera cam, hud;
     protected ExtendViewport vp;
@@ -34,7 +36,7 @@ public abstract class ScreenAdapter implements Screen, InputProcessor, Component
     public abstract void renderSelf(float delta);
     public abstract void resizeSelf(int width, int height);
     public void render(float delta){
-        Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1);
+        Gdx.gl.glClearColor(clear.r, clear.g, clear.b, clear.a);
         Gdx.gl.glClear(GL_COLOR_BUFFER_BIT);
 
         batch.setProjectionMatrix(cam.combined);

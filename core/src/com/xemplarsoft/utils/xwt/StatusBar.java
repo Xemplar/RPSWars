@@ -33,10 +33,10 @@ public class StatusBar extends AbstractComponent {
         if(visible) {
             if (time + debounce <= $_GLOBAL_CLOCK) message = "Nothing Happening";
             batch.draw(bg, x, y, width, height);
-            Color original = Wars.font.getColor();
-            Wars.font.setColor(Color.WHITE);
-            Wars.font.draw(batch, message, x + 0.25F, y + 0.875F);
-            Wars.font.setColor(original);
+            Color original = Wars.fnt_text.getColor();
+            Wars.fnt_text.setColor(Color.WHITE);
+            Wars.fnt_text.draw(batch, message, x + 0.25F, y + 0.875F);
+            Wars.fnt_text.setColor(original);
 
             time++;
         }

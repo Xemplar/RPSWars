@@ -13,7 +13,7 @@ import com.xemplarsoft.games.cross.rps.sprite.Sprite;
 public abstract class Entity {
     public static final com.xemplarsoft.games.cross.rps.controller.Controller DEFAULT_CONTROLLER = new CollisionController();
     public static long ENTITY_COUNTER = 0;
-    public static final float SPEED = 1F;
+    public static final float SPEED = 2.5F;
     protected Sprite sprite;
     protected boolean dead = false;
     
