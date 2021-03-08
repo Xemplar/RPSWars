@@ -76,8 +76,8 @@ public abstract class Entity {
         vel.set(-(float)Math.cos(thetaC) * SPEED, -(float)Math.sin(thetaS) * SPEED);
     
         float diff = Math.abs(rot - vel.angleDeg());
-        if(rot < vel.angleDeg() && diff > 5) rot += delta * 15F;
-        if(rot > vel.angleDeg() && diff > 5) rot -= delta * 15F;
+        if(rot < vel.angleDeg() && diff > 5) rot += delta * 180F;
+        if(rot > vel.angleDeg() && diff > 5) rot -= delta * 180F;
     }
     
     /*    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *    *
@@ -151,6 +151,5 @@ public abstract class Entity {
     public void onTouch(Entity e){}
     
     public void render(SpriteBatch b){
-        b.draw(sprite.getTex(), pos.x, pos.y, 0.5F, 0.5F, width, height, 1, 1, rot);
-    }
+        b.draw(sprite.getTex(), pos.x + 0.1F, pos.y + 0.1F, width/2F, height/2F, width * 1.2F, height * 1.2F, 1, 1, rot + 90F);    }
 }

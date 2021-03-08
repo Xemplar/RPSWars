@@ -4,14 +4,16 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Align;
 import com.xemplarsoft.games.cross.rps.Wars;
-import com.xemplarsoft.utils.xwt.AbstractComponent;
 import com.xemplarsoft.utils.xwt.Action;
 import com.xemplarsoft.utils.xwt.Button;
+import com.xemplarsoft.utils.xwt.ComponentHandler;
+import com.xemplarsoft.utils.xwt.Panel;
 
-public abstract class AbstractSetting<T> extends Button implements Action {
+public abstract class AbstractSetting<T> extends Panel implements Action {
     protected String title, desc;
-    protected BitmapFont font;
+    protected BitmapFont fnt_title, fnt_desc;
     protected T data;
+    protected SettingChangeListener listener;
     
     public void setData(T data){
         this.data = data;
@@ -21,31 +23,32 @@ public abstract class AbstractSetting<T> extends Button implements Action {
         return data;
     }
     
-    public AbstractSetting(String title, String desc, float width, float y){
-        super(0, y, width, width / 4F, "");
+    public AbstractSetting(String title, String desc, float width, float y, ComponentHandler handler){
+        super(0, y, width, width / 4F, null, handler);
         this.title = title;
         this.desc = desc;
         this.width = width;
         this.height = width / 4F;
         this.y = y;
-        this.font = Wars.fnt_text;
-        this.setAction(this);
+        this.fnt_desc = Wars.fnt_text;
+        this.fnt_title = Wars.fnt_button;
+    }
+    
+    public void setListener(SettingChangeListener l){
+        this.listener = l;
     }
     
     public void render(SpriteBatch batch) {
+        float sxd = fnt_desc.getScaleX(), syd = fnt_desc.getScaleY();
+        float sxt = fnt_title.getScaleX(), syt = fnt_title.getScaleY();
         if(border != null) border.render(batch, this);
-        font.draw(batch, title, x + 0.5F, y - height + 1.25F, width * 0.75F, Align.left, false);
-        float sx = font.getScaleX(), sy = font.getScaleY();
-        font.getData().setScale(sx * 0.75F, sy * 0.75F);
-        font.draw(batch, desc, x + 0.5F, y - height + 0.25F, width * 0.75F, Align.left, false);
-        font.getData().setScale(sx, sy);
+        fnt_title.getData().setScale(sxt * 0.825F, syt * 0.825F);
+        fnt_title.draw(batch, title, x + width / 16, y + height, width * 0.75F, Align.left, false);
+        fnt_desc.getData().setScale(sxd * 1.25F, syd * 1.25F);
+        fnt_desc.draw(batch, desc, x + width / 16, y + height - fnt_title.getLineHeight(), width * 0.75F, Align.left, true);
+        fnt_title.getData().setScale(sxt, syt);
+        fnt_desc.getData().setScale(sxd, syd);
     }
     
-    public void doAction(Button b, Type t) {
-        if(b == this && t == Type.CLICKED){
-            clicked();
-        }
-    }
-    
-    public abstract void clicked();
+    public void doAction(Button b, Type t) { }
 }

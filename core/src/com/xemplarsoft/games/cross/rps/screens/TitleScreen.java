@@ -12,7 +12,7 @@ public class TitleScreen extends ScreenAdapter {
     public static float CAM_HEIGHT;
     
     public ImageView view;
-    public SegmentedButton play, options, credits;
+    public SegmentedButton play, options, credits, builder;
     public Label copy;
     
     public BounceBG bg;
@@ -41,14 +41,23 @@ public class TitleScreen extends ScreenAdapter {
         play.setAlignment(Align.center);
         play.setFont(Wars.fnt_button);
         play.setIcon(Wars.ur("play"));
-        
         play.setAction(new Action() {
             public void doAction(Button b, Type t) {
                 if(b == play && t.equals(Type.CLICKED)) Wars.instance.setScreen(Wars.scr_game);
             }
         });
     
-        options = new SegmentedButton(2F, CAM_HEIGHT - (CAM_WIDTH - 2F) - 0.2F, CAM_WIDTH - 4F, 1.8F, "Options");
+        builder = new SegmentedButton(2F, CAM_HEIGHT - (CAM_WIDTH - 2F) - 0.2F, CAM_WIDTH - 4F, 1.8F, "Scenarios");
+        builder.setTextures("btn_text");
+        builder.setAlignment(Align.center);
+        builder.setFont(Wars.fnt_sub);
+        builder.setAction(new Action() {
+            public void doAction(Button b, Type t) {
+                if(b == options && t.equals(Type.CLICKED)) Wars.instance.setScreen(Wars.scr_builder);
+            }
+        });
+        
+        options = new SegmentedButton(2F, CAM_HEIGHT - (CAM_WIDTH - 2F) - 2.2F, CAM_WIDTH - 4F, 1.8F, "Options");
         options.setTextures("btn_text");
         options.setAlignment(Align.center);
         options.setFont(Wars.fnt_sub);
@@ -57,8 +66,8 @@ public class TitleScreen extends ScreenAdapter {
                 if(b == options && t.equals(Type.CLICKED)) Wars.instance.setScreen(Wars.scr_options);
             }
         });
-    
-        credits = new SegmentedButton(2F, CAM_HEIGHT - (CAM_WIDTH - 2F) - 2.2F, CAM_WIDTH - 4F, 1.8F, "Credits");
+        
+        credits = new SegmentedButton(2F, CAM_HEIGHT - (CAM_WIDTH - 2F) - 4.2F, CAM_WIDTH - 4F, 1.8F, "Credits");
         credits.setTextures("btn_text");
         credits.setAlignment(Align.center);
         credits.setFont(Wars.fnt_sub);
@@ -74,8 +83,14 @@ public class TitleScreen extends ScreenAdapter {
         
         addToUI(view);
         addToUI(play);
+        addToUI(builder);
         addToUI(options);
         addToUI(credits);
         addToUI(copy);
+        
+        if(OptionsScreen.getBoolean(1)){
+            Wars.mx_title.setPosition(0);
+            Wars.mx_title.play();
+        }
     }
 }

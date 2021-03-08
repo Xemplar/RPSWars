@@ -27,12 +27,13 @@ public final class CreditsScreen extends ScreenAdapter {
     "n40000c6:",
     "t20000c6:UI Assets",
     "n40000c6:Rye (@Rye#5033)",
+    "n40000c6:4-everThe4C-er",
     "n40000c6:",
     "t20000c6:Game Assets",
     "n40000c6:Chill",
     "n40000c6:",
     "t20000c6:Sound FX",
-    "n40000c6:Panini (My Wife)",
+    "n40000c6:Panini (Jaxon's Wife)",
     "n40000c6:",
     "t20000c6:Server Admins",
     "n40000c6:@BorderlineAxolotl#3067 ",
@@ -51,6 +52,7 @@ public final class CreditsScreen extends ScreenAdapter {
     
     protected float SPEED = 2F;
     protected BitmapFont font;
+    protected SegmentedButton title;
     
     protected boolean scrollDir = true, scrolling = true;
     private float yOff = 1F;
@@ -134,9 +136,13 @@ public final class CreditsScreen extends ScreenAdapter {
         cam.position.set(CAM_WIDTH / 2F, CAM_HEIGHT / 2F, 0);
         cam.update();
         removeAllUI();
-        
-        back = new SegmentedButton(1F, 3F, 2F, 2F, "");
-        back.setTextures("btn_action");
+    
+        title = new SegmentedButton(0, CAM_HEIGHT, CAM_WIDTH, CAM_WIDTH / 8, "Credits");
+        title.setTextures("header_options");
+        title.setFont(Wars.fnt_button);
+        title.setAlignment(Align.center);
+    
+        back = new SegmentedButton(0, CAM_HEIGHT, CAM_WIDTH / 8, CAM_WIDTH / 8, "");
         back.setIcon(Wars.ur("back"));
         back.setAction(new Action() {
             public void doAction(Button b, Type t) {
@@ -147,6 +153,7 @@ public final class CreditsScreen extends ScreenAdapter {
             }
         });
         
+        addToUI(title);
         addToUI(back);
     }
 }

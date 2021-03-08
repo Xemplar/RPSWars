@@ -6,7 +6,7 @@ filter: Nearest,Nearest
 repeat: none
 paper
   rotate: false
-  xy: 1536, 480
+  xy: 1536, 444
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -34,21 +34,21 @@ player3
   index: 0
 rock
   rotate: false
-  xy: 1536, 448
+  xy: 1536, 476
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: 0
+scissors
+  rotate: false
+  xy: 1572, 480
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 scissors
   rotate: false
-  xy: 1568, 480
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 0
-scissors
-  rotate: false
-  xy: 1536, 416
+  xy: 1536, 412
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

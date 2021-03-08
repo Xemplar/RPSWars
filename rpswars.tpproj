@@ -32,7 +32,7 @@ limitMemory=true
 useIndexes=true
 
 scaleFactors=[{suffix:"",factor:1,resampling:bicubic}]
-inputFiles=[{path:android/assets/tiles/pieces,type:Input,dirFilePrefix:null,recursive:false,flattenPaths:false}]
+inputFiles=[{path:tiles/pieces,type:Input,dirFilePrefix:null,recursive:false,flattenPaths:false}]
 
 
 ---
@@ -71,7 +71,7 @@ limitMemory=true
 useIndexes=true
 
 scaleFactors=[{suffix:"",factor:1,resampling:bicubic}]
-inputFiles=[{path:android/assets/tiles/ui,type:Input,dirFilePrefix:null,recursive:false,flattenPaths:false}]
+inputFiles=[{path:tiles/ui,type:Input,dirFilePrefix:null,recursive:false,flattenPaths:false}]
 
 
 -PROJ-

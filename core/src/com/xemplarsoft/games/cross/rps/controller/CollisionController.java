@@ -4,27 +4,26 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.xemplarsoft.games.cross.rps.model.Entity;
 import com.xemplarsoft.games.cross.rps.model.World;
-
-import static com.xemplarsoft.games.cross.rps.screens.GameScreen.CAM_HEIGHT;
-import static com.xemplarsoft.games.cross.rps.screens.GameScreen.CAM_WIDTH;
+import com.xemplarsoft.games.cross.rps.screens.GameScreen;
 
 public class CollisionController implements Controller {
     public void update(float delta, Entity e, World w) {
+        
         Rectangle f = e.getFutureBounds(delta);
-        if(f.x < 0 && e.vel.x < 0) {
+        if(f.x < GameScreen.playArea.x && e.vel.x < 0) {
             e.vel.x = 0;
             e.vel.y = e.vel.y < 0 ? -1 : 1;
         }
-        if(f.x >= ((CAM_WIDTH - 1F) - f.width) && e.vel.x > 0){
+        if(f.x >= ((GameScreen.playArea.x + GameScreen.playArea.width) - f.width) && e.vel.x > 0){
             e.vel.x = 0;
             e.vel.y = e.vel.y < 0 ? -1 : 1;
         }
     
-        if(f.y < 0 && e.vel.y < 0){
+        if(f.y < GameScreen.playArea.y && e.vel.y < 0){
             e.vel.y = 0;
             if(e.vel.x != 0) e.vel.x = e.vel.x < 0 ? -1 : 1;
         }
-        if(f.y >= ((CAM_HEIGHT - 1F) - f.height) && e.vel.y > 0){
+        if(f.y >= ((GameScreen.playArea.y + GameScreen.playArea.height) - f.height) && e.vel.y > 0){
             e.vel.y = 0;
             if(e.vel.x != 0) e.vel.x = e.vel.x < 0 ? -1 : 1;
         }

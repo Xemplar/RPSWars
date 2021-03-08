@@ -6,7 +6,7 @@ filter: Nearest,Nearest
 repeat: none
 back
   rotate: false
-  xy: 1600, 1984
+  xy: 1536, 1856
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -27,14 +27,14 @@ btn_action
   index: 1
 btn_action
   rotate: false
-  xy: 1664, 1966
+  xy: 1536, 1710
   size: 16, 82
   orig: 16, 82
   offset: 0, 0
   index: 0
 btn_action
   rotate: false
-  xy: 1536, 1774
+  xy: 1024, 1290
   size: 16, 82
   orig: 16, 82
   offset: 0, 0
@@ -48,25 +48,74 @@ btn_text
   index: 1
 btn_text
   rotate: false
-  xy: 1024, 1290
-  size: 16, 82
-  orig: 16, 82
-  offset: 0, 0
-  index: 0
-btn_text
-  rotate: false
-  xy: 1680, 1966
+  xy: 1728, 1966
   size: 16, 82
   orig: 16, 82
   offset: 0, 0
   index: 2
+btn_text
+  rotate: false
+  xy: 1744, 1966
+  size: 16, 82
+  orig: 16, 82
+  offset: 0, 0
+  index: 0
+checkbox
+  rotate: false
+  xy: 1600, 1856
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+checkbox
+  rotate: false
+  xy: 1664, 1920
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
 credit
   rotate: false
-  xy: 1600, 1920
+  xy: 1536, 1792
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+header_options
+  rotate: false
+  xy: 1266, 1472
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: 1
+header_options
+  rotate: false
+  xy: 1600, 1792
+  size: 16, 64
+  orig: 16, 64
+  offset: 0, 0
+  index: 0
+header_options
+  rotate: false
+  xy: 1664, 1856
+  size: 16, 64
+  orig: 16, 64
+  offset: 0, 0
+  index: 2
+hp
+  rotate: false
+  xy: 1074, 1456
+  size: 2, 16
+  orig: 2, 16
+  offset: 0, 0
+  index: 0
+hp
+  rotate: false
+  xy: 1067, 1438
+  size: 2, 16
+  orig: 2, 16
+  offset: 0, 0
+  index: 1
 logo
   rotate: false
   xy: 1024, 1536
@@ -76,35 +125,56 @@ logo
   index: -1
 music
   rotate: false
-  xy: 1536, 1920
+  xy: 1138, 1472
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 off
   rotate: false
-  xy: 1536, 1856
+  xy: 1202, 1472
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 play
   rotate: false
-  xy: 1138, 1472
+  xy: 1536, 1920
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-settings
+radio
+  rotate: false
+  xy: 1536, 1984
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+radio
+  rotate: false
+  xy: 1664, 1984
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+restart
   rotate: false
   xy: 1074, 1472
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+settings
+  rotate: false
+  xy: 1600, 1984
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 sounds
   rotate: false
-  xy: 1536, 1984
+  xy: 1600, 1920
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

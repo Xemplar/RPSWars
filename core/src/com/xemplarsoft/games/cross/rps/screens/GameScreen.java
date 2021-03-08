@@ -3,13 +3,14 @@ package com.xemplarsoft.games.cross.rps.screens;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.RandomXS128;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.xemplarsoft.games.cross.rps.Wars;
 import com.xemplarsoft.games.cross.rps.controller.ai.UnitAI;
 import com.xemplarsoft.games.cross.rps.model.*;
 import com.xemplarsoft.games.cross.rps.model.unit.BasicUnit;
 import com.xemplarsoft.games.cross.rps.model.unit.Unit;
-import com.xemplarsoft.utils.xwt.ScreenAdapter;
+import com.xemplarsoft.utils.xwt.*;
 
 public class GameScreen extends ScreenAdapter{
     public static final float CAM_WIDTH = 18F, CAM_HEIGHT_MIN = 22F, CAM_HEIGHT_MAX = 40F;
@@ -18,6 +19,7 @@ public class GameScreen extends ScreenAdapter{
     public static boolean runAd;
     public final World world;
     public final ShapeRenderer debug;
+    public static Rectangle playArea;
 
     public GameScreen(){
         cam = new OrthographicCamera(CAM_WIDTH, CAM_HEIGHT_MAX);
@@ -48,20 +50,30 @@ public class GameScreen extends ScreenAdapter{
 
     public void resizeSelf(int width, int height) {
         CAM_HEIGHT = (float) height/width * CAM_WIDTH;
+        playArea = new Rectangle(1F, 3F, CAM_WIDTH - 2F, CAM_HEIGHT - 4F);
 
         vp.update(width, height, false);
         cam.position.set(CAM_WIDTH / 2, CAM_HEIGHT / 2F, 0);
         cam.update();
+        
+        restart();
+        
+        Wars.mx_title.pause();
+        generateUI();
+        Wars.displayBanner(true);
+    }
+    
+    private void restart(){
         world.clear();
     
         RandomXS128 ran = new RandomXS128();
     
-        final float padding = 1F;
         for(int i = 1; i < 4; i++){
             Entity:
-            for(int j = 0; j < 15; j++){
-                float x = ran.nextFloat() * (CAM_WIDTH - padding*2) + padding;
-                float y = ran.nextFloat() * (CAM_HEIGHT - padding*2) + padding;
+            for(int j = 0; j < Integer.parseInt(OptionsScreen.prefs[2]); j++){
+                float x = ran.nextFloat() * playArea.width + playArea.x;
+                float y = ran.nextFloat() * playArea.height + playArea.y;
+            
                 Unit u = new BasicUnit(Team.fromID(i), x, y);
                 u.setAI(new UnitAI());
                 for(Entity e : world.entities){
@@ -73,11 +85,34 @@ public class GameScreen extends ScreenAdapter{
                 world.spawn(u);
             }
         }
-        generateUI();
     }
-
+    
     private void generateUI(){
         removeAllUI();
+        Panel main = new Panel(0, 0, CAM_WIDTH, 3F, null, this);
+        final SegmentedButton back = new SegmentedButton(0.5F, 0.5F, 2F, 2F, "");
+        final SegmentedButton restart = new SegmentedButton(3.0F, 0.5F, 2F, 2F, "");
+        
+        back.setTextures("btn_action");
+        back.setIcon(Wars.ur("back"));
+        restart.setTextures("btn_action");
+        restart.setIcon(Wars.ur("restart"));
+    
+        back.setAction(new Action() {
+            public void doAction(Button b, Type t) {
+                if(b == back && t == Type.CLICKED) Wars.instance.setScreen(Wars.scr_title);
+            }
+        });
+        restart.setAction(new Action() {
+            public void doAction(Button b, Type t) {
+                if(b == restart && t == Type.CLICKED) restart();
+            }
+        });
+        
+        main.addView(back);
+        main.addView(restart);
+        main.setPosition(0F, 2F);
+        addToUI(main);
     }
 
     public void pause() {

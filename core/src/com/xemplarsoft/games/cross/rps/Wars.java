@@ -2,6 +2,7 @@ package com.xemplarsoft.games.cross.rps;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -33,11 +34,14 @@ public class Wars extends Game {
 	public static MenuScreen scr_menu;
 	public static GameScreen scr_game;
 	public static TitleScreen scr_title;
+	public static BuilderScreen scr_builder;
+	public static boolean showing;
 	
 	public static AdProvider ads;
 	public static Sprite S_SCI, S_PAP, S_ROC;
 	
 	public static Sound FX_SCI, FX_PAP, FX_ROC;
+	public static Music mx_title;
 	
 	public Wars(AdProvider ads){
 		Wars.instance = this;
@@ -61,27 +65,31 @@ public class Wars extends Game {
 		FX_SCI = loadSound(Team.fromID(A_ID).prefix);
 		FX_PAP = loadSound(Team.fromID(B_ID).prefix);
 		FX_ROC = loadSound(Team.fromID(C_ID).prefix);
+		
+		mx_title = loadMusic("title");
+		mx_title.setLooping(true);
 	}
 	
-	private static long prevFXA = -40, prevFXB = -40, prevFXC = -40;
+	private static long SFX_DELAY = 40;
+	private static long prevFXA = -SFX_DELAY, prevFXB = -SFX_DELAY, prevFXC = -SFX_DELAY;
 	public static void playSound(Team t){
 		switch(t.id){
 			default: {
-				if($_GLOBAL_CLOCK - prevFXA > 40) {
+				if($_GLOBAL_CLOCK - prevFXA > SFX_DELAY) {
 					prevFXA = $_GLOBAL_CLOCK;
 					FX_SCI.play(1.0f);
 				}
 				break;
 			}
 			case B_ID: {
-				if($_GLOBAL_CLOCK - prevFXB > 40){
+				if($_GLOBAL_CLOCK - prevFXB > SFX_DELAY){
 					prevFXB = $_GLOBAL_CLOCK;
 					FX_PAP.play(1.0f);
 				}
 				break;
 			}
 			case C_ID: {
-				if($_GLOBAL_CLOCK - prevFXC > 40){
+				if($_GLOBAL_CLOCK - prevFXC > SFX_DELAY){
 					prevFXC = $_GLOBAL_CLOCK;
 					FX_ROC.play(1.0f);
 				}
@@ -93,6 +101,9 @@ public class Wars extends Game {
 	private Sound loadSound(String name){
 		return Gdx.audio.newSound(Gdx.files.internal("audio/" + name + ".ogg"));
 	}
+	private Music loadMusic(String name){
+		return Gdx.audio.newMusic(Gdx.files.internal("audio/" + name + ".ogg"));
+	}
 
 	private void loadScreens(){
 		scr_splash = new SplashScreen();
@@ -101,6 +112,7 @@ public class Wars extends Game {
 		scr_title = new TitleScreen();
 		scr_credits = new CreditsScreen();
 		scr_options = new OptionsScreen();
+		scr_builder = new BuilderScreen();
 
 		setScreen(scr_splash);
 	}
@@ -138,6 +150,10 @@ public class Wars extends Game {
 
 	public static void displayAd(){
 		ads.displayAd();
+	}
+	public static void displayBanner(boolean display){
+		showing = display;
+		ads.displayBannerAd(display);
 	}
 	
 	public static TextureRegion ur(String name) {
