@@ -30,8 +30,8 @@ public abstract class AbstractSetting<T> extends Panel implements Action {
         this.width = width;
         this.height = width / 4F;
         this.y = y;
-        this.fnt_desc = Wars.fnt_text;
-        this.fnt_title = Wars.fnt_button;
+        this.fnt_desc = Wars.fnt_desc;
+        this.fnt_title = Wars.fnt_title;
     }
     
     public void setListener(SettingChangeListener l){
@@ -43,9 +43,9 @@ public abstract class AbstractSetting<T> extends Panel implements Action {
         float sxt = fnt_title.getScaleX(), syt = fnt_title.getScaleY();
         if(border != null) border.render(batch, this);
         fnt_title.getData().setScale(sxt * 0.825F, syt * 0.825F);
-        fnt_title.draw(batch, title, x + width / 16, y + height, width * 0.75F, Align.left, false);
+        fnt_title.draw(batch, title, x + width / 8, y + height, width * 0.5F, Align.left, false);
         fnt_desc.getData().setScale(sxd * 1.25F, syd * 1.25F);
-        fnt_desc.draw(batch, desc, x + width / 16, y + height - fnt_title.getLineHeight(), width * 0.75F, Align.left, true);
+        fnt_desc.draw(batch, desc, x + width / 8, y + height - fnt_title.getLineHeight(), width * 0.5F, Align.left, true);
         fnt_title.getData().setScale(sxt, syt);
         fnt_desc.getData().setScale(sxd, syd);
     }

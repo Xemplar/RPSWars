@@ -26,7 +26,7 @@ public class Wars extends Game {
 	public static final int PORT = 18765;
 
 	private static TextureAtlas ui, pi;
-	public static BitmapFont fnt_text, fnt_title, fnt_sub, fnt_button, fnt_splash;
+	public static BitmapFont fnt_text, fnt_title, fnt_sub, fnt_button, fnt_splash, fnt_desc;
 	
 	public static OptionsScreen scr_options;
 	public static CreditsScreen scr_credits;
@@ -107,7 +107,7 @@ public class Wars extends Game {
 
 	private void loadScreens(){
 		scr_splash = new SplashScreen();
-		scr_menu = new MenuScreen(this);
+		scr_menu = new MenuScreen();
 		scr_game = new GameScreen();
 		scr_title = new TitleScreen();
 		scr_credits = new CreditsScreen();
@@ -123,6 +123,11 @@ public class Wars extends Game {
 		fnt_text.getData().setScale(0.01125F);
 		fnt_text.setColor(Color.WHITE);
 		
+		fnt_desc = new BitmapFont(Gdx.files.internal("fonts/melon.fnt"));
+		fnt_desc.setUseIntegerPositions(false);
+		fnt_desc.getData().setScale(0.01F);
+		fnt_desc.setColor(Color.BLACK);
+		
 		fnt_splash = new BitmapFont(Gdx.files.internal("fonts/melon.fnt"));
 		fnt_splash.setUseIntegerPositions(false);
 		fnt_splash.getData().setScale(0.02F);
@@ -130,7 +135,7 @@ public class Wars extends Game {
 		
 		fnt_title = new BitmapFont(Gdx.files.internal("fonts/abs.fnt"));
 		fnt_title.setUseIntegerPositions(false);
-		fnt_title.getData().setScale(0.02F);
+		fnt_title.getData().setScale(0.015F);
 		fnt_title.setColor(Color.BLACK);
 		
 		fnt_button = new BitmapFont(Gdx.files.internal("fonts/abs.fnt"));

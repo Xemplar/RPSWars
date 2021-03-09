@@ -17,6 +17,10 @@ public abstract class AbstractElement {
         this.x = x;
         this.y = y;
     }
+    public void setPosition(Vector2 v){
+        this.x = v.x;
+        this.y = v.y;
+    }
     public void setVisible(boolean visible){
         this.visible = visible;
     }

@@ -36,8 +36,10 @@ public class TitleScreen extends ScreenAdapter {
         view = new ImageView(1F, CAM_HEIGHT - (CAM_WIDTH - 2F) - 1F, CAM_WIDTH - 2F, CAM_WIDTH - 2F, Wars.ur("start_title"));
         bg = new BounceBG(Wars.ur("bg"), CAM_HEIGHT * 2, CAM_HEIGHT * 2);
         
-        play = new SegmentedButton(1F, CAM_HEIGHT - (CAM_WIDTH - 2F) + 2.5F, CAM_WIDTH - 2F, 2.5F, "Start");
-        play.setTextures("btn_text");
+        final float btn_height = 2.2F;
+        
+        play = new SegmentedButton(1F, CAM_HEIGHT - (CAM_WIDTH - 2F) + 2.5F, CAM_WIDTH - 2F, btn_height * 1.25F, "Start");
+        play.setTextures("btn_stone");
         play.setAlignment(Align.center);
         play.setFont(Wars.fnt_button);
         play.setIcon(Wars.ur("play"));
@@ -47,8 +49,8 @@ public class TitleScreen extends ScreenAdapter {
             }
         });
     
-        builder = new SegmentedButton(2F, CAM_HEIGHT - (CAM_WIDTH - 2F) - 0.2F, CAM_WIDTH - 4F, 1.8F, "Scenarios");
-        builder.setTextures("btn_text");
+        builder = new SegmentedButton(2F, play.getPosition().y - btn_height - 1F, CAM_WIDTH - 4F, btn_height, "Scenarios");
+        builder.setTextures("btn_stone");
         builder.setAlignment(Align.center);
         builder.setFont(Wars.fnt_sub);
         builder.setAction(new Action() {
@@ -57,8 +59,8 @@ public class TitleScreen extends ScreenAdapter {
             }
         });
         
-        options = new SegmentedButton(2F, CAM_HEIGHT - (CAM_WIDTH - 2F) - 2.2F, CAM_WIDTH - 4F, 1.8F, "Options");
-        options.setTextures("btn_text");
+        options = new SegmentedButton(2F, builder.getPosition().y - btn_height - 0.2F, CAM_WIDTH - 4F, btn_height, "Options");
+        options.setTextures("btn_stone");
         options.setAlignment(Align.center);
         options.setFont(Wars.fnt_sub);
         options.setAction(new Action() {
@@ -67,8 +69,8 @@ public class TitleScreen extends ScreenAdapter {
             }
         });
         
-        credits = new SegmentedButton(2F, CAM_HEIGHT - (CAM_WIDTH - 2F) - 4.2F, CAM_WIDTH - 4F, 1.8F, "Credits");
-        credits.setTextures("btn_text");
+        credits = new SegmentedButton(2F, options.getPosition().y - btn_height - 0.2F, CAM_WIDTH - 4F, btn_height, "Credits");
+        credits.setTextures("btn_stone");
         credits.setAlignment(Align.center);
         credits.setFont(Wars.fnt_sub);
         credits.setAction(new Action() {

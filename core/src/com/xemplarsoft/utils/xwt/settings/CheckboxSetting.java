@@ -9,7 +9,7 @@ public class CheckboxSetting extends AbstractSetting<Boolean> {
     protected Checkbox checkbox;
     public CheckboxSetting(String title, String desc, float width, float y, ComponentHandler handler) {
         super(title, desc, width, y, handler);
-        checkbox = new Checkbox(width / 16 * 13, y + height, width / 8, width / 8);
+        checkbox = new Checkbox(width / 16 * 12, y + height, width / 8, width / 8);
         checkbox.setAction(this);
         checkbox.setTextures("checkbox");
         addView(checkbox);

@@ -6,7 +6,7 @@ filter: Nearest,Nearest
 repeat: none
 back
   rotate: false
-  xy: 1536, 1856
+  xy: 1024, 768
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -20,161 +20,329 @@ bg
   index: -1
 btn_action
   rotate: false
-  xy: 1024, 1372
+  xy: 1216, 1020
   size: 43, 82
   orig: 43, 82
   offset: 0, 0
   index: 1
 btn_action
   rotate: false
-  xy: 1536, 1710
+  xy: 1266, 1102
   size: 16, 82
   orig: 16, 82
   offset: 0, 0
   index: 0
 btn_action
   rotate: false
-  xy: 1024, 1290
+  xy: 1088, 814
   size: 16, 82
   orig: 16, 82
   offset: 0, 0
   index: 2
+btn_icon
+  rotate: false
+  xy: 1312, 1280
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 0
+btn_icon
+  rotate: false
+  xy: 1024, 896
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 1
+btn_stone
+  rotate: false
+  xy: 1216, 1280
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 0
+btn_stone
+  rotate: false
+  xy: 1024, 992
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 2
+btn_stone
+  rotate: false
+  xy: 1120, 1088
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 3
+btn_stone
+  rotate: false
+  xy: 1216, 1184
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 5
+btn_stone
+  rotate: false
+  xy: 1089, 718
+  size: 1, 96
+  orig: 1, 96
+  offset: 0, 0
+  index: 1
+btn_stone
+  rotate: false
+  xy: 1024, 302
+  size: 1, 96
+  orig: 1, 96
+  offset: 0, 0
+  index: 4
 btn_text
   rotate: false
-  xy: 1024, 1454
+  xy: 1216, 1102
   size: 50, 82
   orig: 50, 82
   offset: 0, 0
   index: 1
 btn_text
   rotate: false
-  xy: 1728, 1966
+  xy: 1024, 494
+  size: 16, 82
+  orig: 16, 82
+  offset: 0, 0
+  index: 0
+btn_text
+  rotate: false
+  xy: 1259, 1020
   size: 16, 82
   orig: 16, 82
   offset: 0, 0
   index: 2
-btn_text
-  rotate: false
-  xy: 1744, 1966
-  size: 16, 82
-  orig: 16, 82
-  offset: 0, 0
-  index: 0
 checkbox
   rotate: false
-  xy: 1600, 1856
+  xy: 1728, 1344
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 checkbox
   rotate: false
-  xy: 1664, 1920
+  xy: 1024, 576
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 1
+close
+  rotate: false
+  xy: 1312, 1216
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 credit
   rotate: false
-  xy: 1536, 1792
+  xy: 1024, 640
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 header_options
   rotate: false
-  xy: 1266, 1472
+  xy: 1376, 1216
   size: 32, 64
   orig: 32, 64
   offset: 0, 0
   index: 1
 header_options
   rotate: false
-  xy: 1600, 1792
+  xy: 1184, 928
   size: 16, 64
   orig: 16, 64
   offset: 0, 0
   index: 0
 header_options
   rotate: false
-  xy: 1664, 1856
+  xy: 1792, 1344
   size: 16, 64
   orig: 16, 64
   offset: 0, 0
   index: 2
 hp
   rotate: false
-  xy: 1074, 1456
+  xy: 1312, 1200
   size: 2, 16
   orig: 2, 16
   offset: 0, 0
   index: 0
 hp
   rotate: false
-  xy: 1067, 1438
+  xy: 1120, 912
   size: 2, 16
   orig: 2, 16
   offset: 0, 0
   index: 1
+lbl_stone
+  rotate: false
+  xy: 1024, 1184
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 0
+lbl_stone
+  rotate: false
+  xy: 1120, 992
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 2
+lbl_stone
+  rotate: false
+  xy: 1088, 718
+  size: 1, 96
+  orig: 1, 96
+  offset: 0, 0
+  index: 1
 logo
   rotate: false
-  xy: 1024, 1536
+  xy: 1536, 1536
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: -1
 music
   rotate: false
-  xy: 1138, 1472
+  xy: 1408, 1312
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 off
   rotate: false
-  xy: 1202, 1472
+  xy: 1024, 704
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+paper
+  rotate: false
+  xy: 1024, 1376
+  size: 512, 672
+  orig: 512, 672
+  offset: 0, 0
+  index: 1
+paper
+  rotate: false
+  xy: 1536, 1472
+  size: 512, 64
+  orig: 512, 64
+  offset: 0, 0
+  index: 0
+paper
+  rotate: false
+  xy: 1536, 1408
+  size: 512, 64
+  orig: 512, 64
+  offset: 0, 0
+  index: 2
 play
   rotate: false
-  xy: 1536, 1920
+  xy: 1120, 928
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+pnl_stone
+  rotate: false
+  xy: 1024, 1280
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 8
+pnl_stone
+  rotate: false
+  xy: 1120, 1280
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 0
+pnl_stone
+  rotate: false
+  xy: 1024, 1088
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 2
+pnl_stone
+  rotate: false
+  xy: 1120, 1184
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 6
+pnl_stone
+  rotate: false
+  xy: 1024, 398
+  size: 1, 96
+  orig: 1, 96
+  offset: 0, 0
+  index: 1
+pnl_stone
+  rotate: false
+  xy: 1408, 1311
+  size: 96, 1
+  orig: 96, 1
+  offset: 0, 0
+  index: 5
+pnl_stone
+  rotate: false
+  xy: 1088, 622
+  size: 1, 96
+  orig: 1, 96
+  offset: 0, 0
+  index: 7
+pnl_stone
+  rotate: false
+  xy: 1536, 1343
+  size: 96, 1
+  orig: 96, 1
+  offset: 0, 0
+  index: 3
+pnl_stone
+  rotate: false
+  xy: 1216, 1019
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: 4
 radio
   rotate: false
-  xy: 1536, 1984
+  xy: 1024, 832
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 radio
   rotate: false
-  xy: 1664, 1984
+  xy: 1600, 1344
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 1
 restart
   rotate: false
-  xy: 1074, 1472
+  xy: 1664, 1344
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 settings
   rotate: false
-  xy: 1600, 1984
+  xy: 1536, 1344
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 sounds
   rotate: false
-  xy: 1600, 1920
+  xy: 1472, 1312
   size: 64, 64
   orig: 64, 64
   offset: 0, 0

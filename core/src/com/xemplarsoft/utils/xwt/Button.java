@@ -17,6 +17,7 @@ public class Button extends Label implements Interfacable {
         super(x, y, text);
         this.width = width;
         this.height = height;
+        this.visible = true;
     }
 
     public void setNormalBG(TextureRegion t){

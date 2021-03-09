@@ -23,7 +23,8 @@ public final class OptionsScreen extends ScreenAdapter implements Action, Settin
     
     public CheckboxSetting soundfx, soundbg, convert;
     public NumberSetting units;
-    public SegmentedButton back, title;
+    public SegmentedButton title;
+    public Button back;
     
     public OptionsScreen() {
         cam = new OrthographicCamera(CAM_WIDTH, CAM_HEIGHT_MAX);
@@ -72,13 +73,18 @@ public final class OptionsScreen extends ScreenAdapter implements Action, Settin
         cam.update();
         removeAllUI();
         
-        title = new SegmentedButton(0, CAM_HEIGHT, CAM_WIDTH, CAM_WIDTH / 8, "Options");
-        title.setTextures("header_options");
+        SegmentedPanel main = new SegmentedPanel(0, CAM_HEIGHT - (CAM_WIDTH / 16), CAM_WIDTH, CAM_HEIGHT - (CAM_WIDTH / 16), this);
+        main.setTextures("pnl_stone");
+        main.setBack("paper");
+        
+        title = new SegmentedButton(2F, CAM_HEIGHT, CAM_WIDTH - 4F, CAM_WIDTH / 8, "Options");
+        title.setOffY(-0.25F);
+        title.setTextures("lbl_stone");
         title.setFont(Wars.fnt_button);
         title.setAlignment(Align.center);
     
-        back = new SegmentedButton(0, CAM_HEIGHT, CAM_WIDTH / 8, CAM_WIDTH / 8, "");
-        back.setIcon(Wars.ur("back"));
+        back = new Button(CAM_WIDTH / 16 * 2, CAM_WIDTH / 16 * 4, CAM_WIDTH / 8, CAM_WIDTH / 8, "");
+        back.setBG(Wars.ur("close"));
         back.setAction(new Action() {
             public void doAction(Button b, Type t) {
                 if(b == back && t.equals(Type.CLICKED)){
@@ -102,13 +108,14 @@ public final class OptionsScreen extends ScreenAdapter implements Action, Settin
         soundbg.setListener(this);
         units.setListener(this);
         convert.setListener(this);
-        
+    
         addToUI(title);
-        addToUI(back);
-        addToUI(soundfx);
-        addToUI(soundbg);
-        addToUI(convert);
-        addToUI(units);
+        main.addView(back);
+        main.addView(soundfx);
+        main.addView(soundbg);
+        main.addView(convert);
+        main.addView(units);
+        addToUI(main);
     }
     
     public void changed(AbstractSetting<?> setting, String value) {
