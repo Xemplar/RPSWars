@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.xemplarsoft.utils.xwt.AbstractComponent;
 
 public class TranslateT extends AbstractTransition{
-    protected Vector2 to, diff;
+    protected Vector2 to, start, diff;
     protected float pro;
     public TranslateT(Vector2 to, float duration){
         super(duration);
@@ -22,8 +22,8 @@ public class TranslateT extends AbstractTransition{
             return;
         }
         
-        float ration = 1F - interpolator.getMultiplier(); //Comes to positive 1 but we want the inverse ration.
-        comp.setPosition(to.x - diff.x * ration, to.y - diff.y * ration);
+        float ration = interpolator.getMultiplier();
+        comp.setPosition(start.x - diff.x * ration, start.y - diff.y * ration);
     }
     
     public void start() {
@@ -33,6 +33,7 @@ public class TranslateT extends AbstractTransition{
     
     public void registerComponent(AbstractComponent comp) {
         super.registerComponent(comp);
-        this.diff = comp.getPosition().sub(to);
+        this.start = comp.getPosition();
+        this.diff = start.cpy().sub(to.cpy());
     }
 }

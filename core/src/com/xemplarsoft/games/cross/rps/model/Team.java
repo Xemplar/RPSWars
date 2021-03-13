@@ -1,8 +1,6 @@
 package com.xemplarsoft.games.cross.rps.model;
 
-import com.xemplarsoft.games.cross.rps.Wars;
 import com.xemplarsoft.games.cross.rps.sprite.Sprite;
-import com.xemplarsoft.games.cross.rps.sprite.SpriteA;
 
 import static com.xemplarsoft.games.cross.rps.Wars.*;
 

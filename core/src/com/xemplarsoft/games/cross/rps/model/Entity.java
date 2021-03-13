@@ -7,13 +7,13 @@ import com.xemplarsoft.games.cross.rps.controller.AIController;
 import com.xemplarsoft.games.cross.rps.controller.CollisionController;
 import com.xemplarsoft.games.cross.rps.controller.Controller;
 import com.xemplarsoft.games.cross.rps.controller.ai.AI;
-import com.xemplarsoft.games.cross.rps.controller.ai.AbstractAI;
 import com.xemplarsoft.games.cross.rps.sprite.Sprite;
 
 public abstract class Entity {
     public static final com.xemplarsoft.games.cross.rps.controller.Controller DEFAULT_CONTROLLER = new CollisionController();
     public static long ENTITY_COUNTER = 0;
     public static final float SPEED = 2.5F;
+    protected float speed_mult = 1F;
     protected Sprite sprite;
     protected boolean dead = false;
     
@@ -54,6 +54,11 @@ public abstract class Entity {
     }
     
     public void setTarget(Vector2 dest) {
+        this.setTarget(dest, 1F);
+    }
+    
+    public void setTarget(Vector2 dest, float speed_mult) {
+        this.speed_mult = speed_mult;
         this.target = dest;
     }
     
@@ -73,7 +78,7 @@ public abstract class Entity {
         float thetaS = (float) Math.asin(dy / dh);
         float thetaC = (float) Math.acos(dx / dh);
         
-        vel.set(-(float)Math.cos(thetaC) * SPEED, -(float)Math.sin(thetaS) * SPEED);
+        vel.set(-(float)Math.cos(thetaC) * SPEED * speed_mult, -(float)Math.sin(thetaS) * SPEED * speed_mult);
     
         float diff = Math.abs(rot - vel.angleDeg());
         if(rot < vel.angleDeg() && diff > 5) rot += delta * 180F;
@@ -116,7 +121,7 @@ public abstract class Entity {
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     
     public Rectangle getFutureBounds(float delta){
-        Vector2 pos = this.pos.cpy().mulAdd(vel, delta);
+        Vector2 pos = this.pos.cpy().mulAdd(vel.cpy().scl(speed_mult), delta);
         return new Rectangle(pos.x - width / 2, pos.y - height / 2, width, height);
     }
     
@@ -133,7 +138,7 @@ public abstract class Entity {
         updateVelocity(delta);
         controller.update(delta, this, w);
         
-        pos = pos.mulAdd(vel, delta);
+        pos = pos.mulAdd(vel.cpy().scl(speed_mult), delta);
     }
     
     public boolean isDead(){

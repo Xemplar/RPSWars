@@ -27,7 +27,23 @@ public class Panel extends AbstractComponent {
         views.put(comp, pos);
         handler.addToUI(comp);
     }
-
+    
+    public void hideAll(){
+        for(AbstractComponent comp : views.keys){
+            if(comp != null) {
+                comp.setVisible(false);
+            }
+        }
+    }
+    
+    public void showAll(){
+        for(AbstractComponent comp : views.keys){
+            if(comp != null) {
+                comp.setVisible(true);
+            }
+        }
+    }
+    
     public void removeView(AbstractComponent comp){
         views.removeKey(comp);
         handler.removeFromUI(comp);
@@ -49,7 +65,11 @@ public class Panel extends AbstractComponent {
             }
         }
     }
-
+    
+    public void setPosition(Vector2 v) {
+        this.setPosition(v.x, v.y);
+    }
+    
     @Override
     public void setVisible(boolean visible) {
         super.setVisible(visible);

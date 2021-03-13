@@ -26,6 +26,8 @@ public final class OptionsScreen extends ScreenAdapter implements Action, Settin
     public SegmentedButton title;
     public Button back;
     
+    public FadeView fadeIn, fadeOut;
+    
     public OptionsScreen() {
         cam = new OrthographicCamera(CAM_WIDTH, CAM_HEIGHT_MAX);
         vp = new ExtendViewport(CAM_WIDTH, CAM_HEIGHT_MIN, CAM_WIDTH, CAM_HEIGHT_MAX, cam);
@@ -63,7 +65,8 @@ public final class OptionsScreen extends ScreenAdapter implements Action, Settin
     }
     
     public void renderSelf(float delta) {
-    
+        if(fadeIn != null) fadeIn.update(delta);
+        if(fadeOut != null) fadeOut.update(delta);
     }
     
     public void resizeSelf(int width, int height) {
@@ -72,6 +75,16 @@ public final class OptionsScreen extends ScreenAdapter implements Action, Settin
         cam.position.set(CAM_WIDTH / 2F, CAM_HEIGHT / 2F, 0);
         cam.update();
         removeAllUI();
+        
+        fadeIn = new FadeView(CAM_WIDTH, CAM_HEIGHT, Wars.ur("fade_black"), true);
+        fadeOut = new FadeView(CAM_WIDTH, CAM_HEIGHT, Wars.ur("fade_black"), false);
+        
+        fadeIn.setAction(new Action() {
+            public void doAction(Button b, Type t) {
+                Wars.instance.setScreen(Wars.scr_title);
+            }
+        });
+        if(!fadeOut.isRunning()) fadeOut.start();
         
         SegmentedPanel main = new SegmentedPanel(0, CAM_HEIGHT - (CAM_WIDTH / 16), CAM_WIDTH, CAM_HEIGHT - (CAM_WIDTH / 16), this);
         main.setTextures("pnl_stone");
@@ -88,7 +101,7 @@ public final class OptionsScreen extends ScreenAdapter implements Action, Settin
         back.setAction(new Action() {
             public void doAction(Button b, Type t) {
                 if(b == back && t.equals(Type.CLICKED)){
-                    Wars.instance.setScreen(Wars.scr_title);
+                    fadeIn.start();
                 }
             }
         });
@@ -116,6 +129,8 @@ public final class OptionsScreen extends ScreenAdapter implements Action, Settin
         main.addView(convert);
         main.addView(units);
         addToUI(main);
+        addToUI(fadeIn);
+        addToUI(fadeOut);
     }
     
     public void changed(AbstractSetting<?> setting, String value) {

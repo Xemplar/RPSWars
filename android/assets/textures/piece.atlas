@@ -1,54 +1,33 @@
 
 piece.png
-size: 2048,512
+size: 128,64
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 paper
   rotate: false
-  xy: 1536, 444
+  xy: 36, 32
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
-player1
-  rotate: false
-  xy: 1024, 0
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 0
-player2
-  rotate: false
-  xy: 0, 0
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 0
-player3
-  rotate: false
-  xy: 512, 0
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 0
 rock
   rotate: false
-  xy: 1536, 476
+  xy: 0, 28
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: 0
 scissors
   rotate: false
-  xy: 1572, 480
+  xy: 36, 0
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 scissors
   rotate: false
-  xy: 1536, 412
+  xy: 68, 32
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

@@ -2,11 +2,11 @@ package com.xemplarsoft.games.cross.rps.sprite;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public class Sprite4D extends Sprite {
-    protected Sprite u, d, l, r;
+public class Sprite4D extends com.xemplarsoft.games.cross.rps.sprite.Sprite {
+    protected com.xemplarsoft.games.cross.rps.sprite.Sprite u, d, l, r;
     protected int dir = 0;
     
-    public Sprite4D(Sprite u, Sprite d, Sprite l, Sprite r){
+    public Sprite4D(com.xemplarsoft.games.cross.rps.sprite.Sprite u, com.xemplarsoft.games.cross.rps.sprite.Sprite d, com.xemplarsoft.games.cross.rps.sprite.Sprite l, com.xemplarsoft.games.cross.rps.sprite.Sprite r){
         this.u = u;
         this.d = d;
         this.l = l;
@@ -14,9 +14,9 @@ public class Sprite4D extends Sprite {
     }
     
     public Sprite4D(TextureRegion u, TextureRegion d, TextureRegion l, TextureRegion r){
-        this.u = new Sprite(u);
-        this.d = new Sprite(d);
-        this.l = new Sprite(l);
+        this.u = new com.xemplarsoft.games.cross.rps.sprite.Sprite(u);
+        this.d = new com.xemplarsoft.games.cross.rps.sprite.Sprite(d);
+        this.l = new com.xemplarsoft.games.cross.rps.sprite.Sprite(l);
         this.r = new Sprite(r);
     }
     

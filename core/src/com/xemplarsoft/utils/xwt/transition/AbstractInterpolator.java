@@ -5,9 +5,12 @@ public abstract class AbstractInterpolator {
     protected float duration, pos;
     protected boolean invert;
     
-    public AbstractInterpolator(float duration, boolean invert){
-        this.duration = duration;
+    public AbstractInterpolator(boolean invert){
         this.invert = invert;
+    }
+    
+    void registerTransition(AbstractTransition transition){
+        this.duration = transition.duration;
     }
     
     public void update(float delta){

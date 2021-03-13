@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.xemplarsoft.games.cross.rps.model.Team;
+import com.xemplarsoft.games.cross.rps.scenario.ParameterFetcher;
 import com.xemplarsoft.games.cross.rps.screens.*;
 import com.xemplarsoft.games.cross.rps.sprite.Sprite;
 import com.xemplarsoft.games.cross.rps.sprite.SpriteA;
@@ -19,6 +20,7 @@ public class Wars extends Game {
 	public static Wars instance;
 	//public static final String TEST_DB_URL = "https://xemplarsoft.com/testdb/TestDBHook";
 	public static final int A_ID = 1, B_ID = 2, C_ID = 3;
+	public static final float FADE_DURATION = 0.25F;
 	
 	public static final String APP_VERSION = "0.1.1";
 	public static final String APP_ENCLAVE = "Alpha";
@@ -42,6 +44,8 @@ public class Wars extends Game {
 	
 	public static Sound FX_SCI, FX_PAP, FX_ROC;
 	public static Music mx_title;
+	
+	public static ParameterFetcher PARAMS = ParameterFetcher.getInstance(true);
 	
 	public Wars(AdProvider ads){
 		Wars.instance = this;

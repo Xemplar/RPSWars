@@ -6,14 +6,14 @@ filter: Nearest,Nearest
 repeat: none
 back
   rotate: false
-  xy: 1024, 768
+  xy: 1024, 640
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 bg
   rotate: false
-  xy: 0, 1024
+  xy: 0, 0
   size: 1024, 1024
   orig: 1024, 1024
   offset: 0, 0
@@ -41,42 +41,42 @@ btn_action
   index: 2
 btn_icon
   rotate: false
-  xy: 1312, 1280
+  xy: 1024, 896
   size: 96, 96
   orig: 96, 96
   offset: 0, 0
   index: 0
 btn_icon
   rotate: false
-  xy: 1024, 896
+  xy: 1120, 992
   size: 96, 96
   orig: 96, 96
   offset: 0, 0
   index: 1
 btn_stone
   rotate: false
-  xy: 1216, 1280
+  xy: 1024, 992
   size: 96, 96
   orig: 96, 96
   offset: 0, 0
   index: 0
 btn_stone
   rotate: false
-  xy: 1024, 992
+  xy: 1120, 1088
   size: 96, 96
   orig: 96, 96
   offset: 0, 0
   index: 2
 btn_stone
   rotate: false
-  xy: 1120, 1088
+  xy: 1216, 1184
   size: 96, 96
   orig: 96, 96
   offset: 0, 0
   index: 3
 btn_stone
   rotate: false
-  xy: 1216, 1184
+  xy: 1312, 1280
   size: 96, 96
   orig: 96, 96
   offset: 0, 0
@@ -90,7 +90,7 @@ btn_stone
   index: 1
 btn_stone
   rotate: false
-  xy: 1024, 302
+  xy: 1024, 238
   size: 1, 96
   orig: 1, 96
   offset: 0, 0
@@ -104,7 +104,7 @@ btn_text
   index: 1
 btn_text
   rotate: false
-  xy: 1024, 494
+  xy: 1024, 430
   size: 16, 82
   orig: 16, 82
   offset: 0, 0
@@ -118,28 +118,42 @@ btn_text
   index: 2
 checkbox
   rotate: false
-  xy: 1728, 1344
+  xy: 1024, 704
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 0
 checkbox
   rotate: false
-  xy: 1024, 576
+  xy: 1024, 512
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 1
 close
   rotate: false
-  xy: 1312, 1216
+  xy: 1728, 1344
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 credit
   rotate: false
-  xy: 1024, 640
+  xy: 1024, 576
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+fade_black
+  rotate: false
+  xy: 1792, 1344
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+fade_white
+  rotate: false
+  xy: 1472, 1312
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -160,7 +174,7 @@ header_options
   index: 0
 header_options
   rotate: false
-  xy: 1792, 1344
+  xy: 1856, 1344
   size: 16, 64
   orig: 16, 64
   offset: 0, 0
@@ -181,14 +195,14 @@ hp
   index: 1
 lbl_stone
   rotate: false
-  xy: 1024, 1184
+  xy: 1024, 1280
   size: 96, 96
   orig: 96, 96
   offset: 0, 0
   index: 0
 lbl_stone
   rotate: false
-  xy: 1120, 992
+  xy: 1024, 1184
   size: 96, 96
   orig: 96, 96
   offset: 0, 0
@@ -209,14 +223,14 @@ logo
   index: -1
 music
   rotate: false
-  xy: 1408, 1312
+  xy: 1120, 928
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 off
   rotate: false
-  xy: 1024, 704
+  xy: 1600, 1344
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -234,28 +248,21 @@ paper
   size: 512, 64
   orig: 512, 64
   offset: 0, 0
-  index: 0
+  index: 2
 paper
   rotate: false
   xy: 1536, 1408
   size: 512, 64
   orig: 512, 64
   offset: 0, 0
-  index: 2
+  index: 0
 play
   rotate: false
-  xy: 1120, 928
+  xy: 1024, 768
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-pnl_stone
-  rotate: false
-  xy: 1024, 1280
-  size: 96, 96
-  orig: 96, 96
-  offset: 0, 0
-  index: 8
 pnl_stone
   rotate: false
   xy: 1120, 1280
@@ -279,7 +286,14 @@ pnl_stone
   index: 6
 pnl_stone
   rotate: false
-  xy: 1024, 398
+  xy: 1216, 1280
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: 8
+pnl_stone
+  rotate: false
+  xy: 1024, 334
   size: 1, 96
   orig: 1, 96
   offset: 0, 0
@@ -287,6 +301,13 @@ pnl_stone
 pnl_stone
   rotate: false
   xy: 1408, 1311
+  size: 96, 1
+  orig: 96, 1
+  offset: 0, 0
+  index: 3
+pnl_stone
+  rotate: false
+  xy: 1536, 1343
   size: 96, 1
   orig: 96, 1
   offset: 0, 0
@@ -300,13 +321,6 @@ pnl_stone
   index: 7
 pnl_stone
   rotate: false
-  xy: 1536, 1343
-  size: 96, 1
-  orig: 96, 1
-  offset: 0, 0
-  index: 3
-pnl_stone
-  rotate: false
   xy: 1216, 1019
   size: 1, 1
   orig: 1, 1
@@ -314,42 +328,42 @@ pnl_stone
   index: 4
 radio
   rotate: false
-  xy: 1024, 832
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: 0
-radio
-  rotate: false
-  xy: 1600, 1344
+  xy: 1312, 1216
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: 1
-restart
+radio
   rotate: false
   xy: 1664, 1344
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 0
+restart
+  rotate: false
+  xy: 1408, 1312
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 settings
   rotate: false
-  xy: 1536, 1344
+  xy: 1024, 832
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 sounds
   rotate: false
-  xy: 1472, 1312
+  xy: 1536, 1344
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 start_title
   rotate: false
-  xy: 0, 0
+  xy: 0, 1024
   size: 1024, 1024
   orig: 1024, 1024
   offset: 0, 0

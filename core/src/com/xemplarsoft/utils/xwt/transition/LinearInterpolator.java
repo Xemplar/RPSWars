@@ -1,8 +1,8 @@
 package com.xemplarsoft.utils.xwt.transition;
 
 public class LinearInterpolator extends AbstractInterpolator{
-    public LinearInterpolator(float duration, boolean invert){
-        super(duration, invert);
+    public LinearInterpolator(boolean invert){
+        super(invert);
     }
     
     public float getMultiplier() {

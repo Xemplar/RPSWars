@@ -1,8 +1,8 @@
 package com.xemplarsoft.utils.xwt.transition;
 
 public class HalfSinInterpolator extends AbstractInterpolator{
-    public HalfSinInterpolator(float duration, boolean invert){
-        super(duration, invert);
+    public HalfSinInterpolator(boolean invert){
+        super(invert);
     }
     
     public float getMultiplier() {

@@ -30,7 +30,7 @@ public class ImageView extends AbstractComponent {
             Color c = batch.getColor();
             batch.setColor(c.r, c.g, c.b, transparency);
             batch.draw(image, x, y, width, height);
-            batch.setColor(c.r, c.g, c.b, c.a);
+            batch.setColor(c.r, c.g, c.b, 1F);
         }
     }
 }

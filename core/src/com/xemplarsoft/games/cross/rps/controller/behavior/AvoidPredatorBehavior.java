@@ -2,6 +2,7 @@ package com.xemplarsoft.games.cross.rps.controller.behavior;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.collision.Segment;
+import com.xemplarsoft.games.cross.rps.Wars;
 import com.xemplarsoft.games.cross.rps.math.Segment2D;
 import com.xemplarsoft.games.cross.rps.model.Entity;
 import com.xemplarsoft.games.cross.rps.model.World;
@@ -52,14 +53,14 @@ public class AvoidPredatorBehavior implements Behavior{
             //w.debug.line(escape.a, escape.b);
             if(mid.dst(e.pos) < mid.dst(closest.pos)) {
                 if(escape.a.x < 0 || escape.a.x > CAM_WIDTH || escape.a.y < 0 || escape.a.y > CAM_HEIGHT) {
-                    e.setTarget(escape.b);
+                    e.setTarget(escape.b, Wars.PARAMS.getRunSpeed());
                     isRunning = true;
                     from = closest;
                     bestVel = e.vel;
                     return false;
                 }
                 if(escape.b.x < 0 || escape.b.x > CAM_WIDTH || escape.b.y < 0 || escape.b.y > CAM_HEIGHT) {
-                    e.setTarget(escape.a);
+                    e.setTarget(escape.a, Wars.PARAMS.getRunSpeed());
                     isRunning = true;
                     from = closest;
                     bestVel = e.vel;

@@ -49,7 +49,8 @@ public abstract class ScreenAdapter implements Screen, InputProcessor, Component
             batch.begin();
         }
 
-        for(AbstractElement comp : ui){
+        for(int i = 0; i < ui.size; i++){
+            AbstractElement comp = ui.get(i);
             if(comp.isVisible()){
                 comp.render(batch);
             }
