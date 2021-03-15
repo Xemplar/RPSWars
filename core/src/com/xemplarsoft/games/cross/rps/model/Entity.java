@@ -121,7 +121,7 @@ public abstract class Entity {
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     
     public Rectangle getFutureBounds(float delta){
-        Vector2 pos = this.pos.cpy().mulAdd(vel.cpy().scl(speed_mult), delta);
+        Vector2 pos = this.pos.cpy().mulAdd(vel.cpy().scl(getSpeedMultiplier()), delta);
         return new Rectangle(pos.x - width / 2, pos.y - height / 2, width, height);
     }
     
@@ -138,7 +138,11 @@ public abstract class Entity {
         updateVelocity(delta);
         controller.update(delta, this, w);
         
-        pos = pos.mulAdd(vel.cpy().scl(speed_mult), delta);
+        pos = pos.mulAdd(vel.cpy().scl(getSpeedMultiplier()), delta);
+    }
+    
+    protected float getSpeedMultiplier(){
+        return speed_mult;
     }
     
     public boolean isDead(){

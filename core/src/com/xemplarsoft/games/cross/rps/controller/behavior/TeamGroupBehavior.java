@@ -1,5 +1,6 @@
 package com.xemplarsoft.games.cross.rps.controller.behavior;
 
+import com.xemplarsoft.games.cross.rps.Wars;
 import com.xemplarsoft.games.cross.rps.model.Entity;
 import com.xemplarsoft.games.cross.rps.model.World;
 import com.xemplarsoft.games.cross.rps.model.unit.Unit;
@@ -33,7 +34,7 @@ public class TeamGroupBehavior implements Behavior{
         if(closest == null) return true;
         if(Integer.parseInt(args[1].toString()) <= d) return true;
         
-        e.setTarget(closest.pos);
+        e.setTarget(closest.pos, Wars.PARAMS.getMovementSpeed());
         
         return false;
     }

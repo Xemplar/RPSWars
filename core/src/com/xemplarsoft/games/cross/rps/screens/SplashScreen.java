@@ -8,7 +8,7 @@ import com.xemplarsoft.games.cross.rps.Wars;
 import com.xemplarsoft.utils.xwt.*;
 
 public class SplashScreen extends ScreenAdapter {
-    public static final float CAM_WIDTH = 18F, CAM_HEIGHT_MIN = 22F, CAM_HEIGHT_MAX = 40F;
+    public static final float CAM_WIDTH = 18F, CAM_HEIGHT_MIN = 32F, CAM_HEIGHT_MAX = 40F;
     public static float CAM_HEIGHT;
     
     public ImageView logo;

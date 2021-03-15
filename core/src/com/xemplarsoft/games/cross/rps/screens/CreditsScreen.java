@@ -15,7 +15,7 @@ import com.xemplarsoft.utils.xwt.*;
 import static com.xemplarsoft.games.cross.rps.CreditsScroller.*;
 
 public final class CreditsScreen extends ScreenAdapter {
-    public static final float CAM_WIDTH = 18F, CAM_HEIGHT_MIN = 22F, CAM_HEIGHT_MAX = 40F, PADDING = 0.25F;
+    public static final float CAM_WIDTH = 18F, CAM_HEIGHT_MIN = 32F, CAM_HEIGHT_MAX = 40F, PADDING = 0.25F;
     public static float CAM_HEIGHT;
     public static String[] CREDITS = new String[]{
     "n40000c6:",

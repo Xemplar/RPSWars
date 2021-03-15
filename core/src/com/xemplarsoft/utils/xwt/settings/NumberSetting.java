@@ -36,8 +36,12 @@ public class NumberSetting extends AbstractSetting<Integer>{
         addView(m);
     }
     
-    public void setData(Integer data) {
-        super.setData(data);
+    public void setData(String data) {
+        try {
+            this.data = Math.min(Math.max(Integer.parseInt(data), min), max);
+        } catch (NumberFormatException e){
+            this.data = min;
+        }
         update();
     }
     

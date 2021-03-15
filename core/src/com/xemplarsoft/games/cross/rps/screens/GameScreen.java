@@ -13,7 +13,7 @@ import com.xemplarsoft.games.cross.rps.model.unit.Unit;
 import com.xemplarsoft.utils.xwt.*;
 
 public class GameScreen extends ScreenAdapter{
-    public static final float CAM_WIDTH = 18F, CAM_HEIGHT_MIN = 22F, CAM_HEIGHT_MAX = 40F;
+    public static final float CAM_WIDTH = 18F, CAM_HEIGHT_MIN = 32F, CAM_HEIGHT_MAX = 40F;
     public static long $_GLOBAL_CLOCK = 0L;
     public static float CAM_HEIGHT;
     public static boolean runAd;
@@ -69,12 +69,13 @@ public class GameScreen extends ScreenAdapter{
         RandomXS128 ran = new RandomXS128();
     
         for(int i = 1; i < 4; i++){
+            Team t = Team.fromID(i);
             Entity:
-            for(int j = 0; j < Integer.parseInt(OptionsScreen.prefs[2]); j++){
+            for(int j = 0; j < Wars.PARAMS.getUnitCount(t); j++){
                 float x = ran.nextFloat() * playArea.width + playArea.x;
                 float y = ran.nextFloat() * playArea.height + playArea.y;
             
-                Unit u = new BasicUnit(Team.fromID(i), x, y);
+                Unit u = new BasicUnit(t, x, y);
                 u.setAI(new UnitAI());
                 for(Entity e : world.entities){
                     if(u.getBounds().overlaps(e.getBounds())){
@@ -90,13 +91,11 @@ public class GameScreen extends ScreenAdapter{
     private void generateUI(){
         removeAllUI();
         Panel main = new Panel(0, 0, CAM_WIDTH, 3F, null, this);
-        final SegmentedButton back = new SegmentedButton(0.5F, 0.5F, 2F, 2F, "");
-        final SegmentedButton restart = new SegmentedButton(3.0F, 0.5F, 2F, 2F, "");
+        final Button back = new Button(0.5F, 0.5F, 2F, 2F, "");
+        final Button restart = new Button(3.0F, 0.5F, 2F, 2F, "");
         
-        back.setTextures("btn_action");
-        back.setIcon(Wars.ur("back"));
-        restart.setTextures("btn_action");
-        restart.setIcon(Wars.ur("restart"));
+        back.setBG(Wars.ur("back"));
+        restart.setBG(Wars.ur("restart"));
     
         back.setAction(new Action() {
             public void doAction(Button b, Type t) {

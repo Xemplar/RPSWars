@@ -41,7 +41,7 @@ public class AvoidPredatorBehavior implements Behavior{
         if(pair == null) {
             float dx = (e.pos.x - closest.pos.x) * 1;
             float dy = (e.pos.y - closest.pos.y) * 1;
-            e.setTarget(new Vector2(e.pos.x + dx, e.pos.y + dy));
+            e.setTarget(new Vector2(e.pos.x + dx, e.pos.y + dy), Wars.PARAMS.getRunSpeed());
         } else {
             Segment2D death = new Segment2D(closest.pos, pair.pos);
             Vector2 mid = death.midpoint();
@@ -67,8 +67,8 @@ public class AvoidPredatorBehavior implements Behavior{
                     return false;
                 }
             }
-            if(escape.a.dst(e.pos) > escape.b.dst(e.pos)) e.setTarget(escape.b);
-            else e.setTarget(escape.a);
+            if(escape.a.dst(e.pos) > escape.b.dst(e.pos)) e.setTarget(escape.b, Wars.PARAMS.getRunSpeed());
+            else e.setTarget(escape.a, Wars.PARAMS.getRunSpeed());
         }
         return false;
     }

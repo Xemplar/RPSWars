@@ -15,9 +15,7 @@ public abstract class AbstractSetting<T> extends Panel implements Action {
     protected T data;
     protected SettingChangeListener listener;
     
-    public void setData(T data){
-        this.data = data;
-    }
+    public abstract void setData(String data);
     
     public T getData(){
         return data;

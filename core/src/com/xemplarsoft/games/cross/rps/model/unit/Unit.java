@@ -11,7 +11,9 @@ import com.xemplarsoft.games.cross.rps.sprite.Sprite;
 
 public abstract class Unit extends Entity {
     protected Team team;
-    protected int maxHp = 2, hp = maxHp;
+    protected int maxHp, hp, attack, defense;
+    protected float team_speed;
+    
     public Unit(Sprite sprite, float x, float y){
         super(sprite, x, y, 1.25F, 1.25F);
     }
@@ -19,6 +21,14 @@ public abstract class Unit extends Entity {
     public void setup(Team team){
         this.team = team;
         this.sprite = team.getSprite();
+        this.maxHp = this.hp = Wars.PARAMS.getMaxHP(team);
+        this.attack = Wars.PARAMS.getAttack(team);
+        this.defense = Wars.PARAMS.getDefense(team);
+        this.team_speed = Wars.PARAMS.getSpeed(team);
+    }
+    
+    protected float getSpeedMultiplier() {
+        return super.getSpeedMultiplier() * team_speed;
     }
     
     public boolean isTouchable() {
@@ -40,21 +50,21 @@ public abstract class Unit extends Entity {
         if(!(e instanceof Unit)) return;
         Unit p = (Unit) e;
         if(team.isPrey(p.team)){
-            if(Boolean.parseBoolean(OptionsScreen.prefs[3])){
+            if(Wars.PARAMS.convert()){
                 this.convert(p.team);
             } else {
-                //
-                if(true){ //If people want health
-                    if(!hit){
-                        hit = true;
-                        hp--;
-                    }
-                } else {
-                    this.kill();
+                if(!hit){
+                    hitBy(p);
                 }
             }
-            if(Boolean.parseBoolean(OptionsScreen.prefs[0])) Wars.playSound(p.team);
         }
+    }
+    
+    private void hitBy(Unit u){
+        this.hp = Math.max(this.hp - Math.max(u.attack - this.defense, 0), 0);
+        System.out.println("My HP: " + this.hp + ", Attack: " + u.attack + ", Defense: " + this.defense);
+        if(Boolean.parseBoolean(OptionsScreen.prefs[0])) Wars.playSound(u.team);
+        hit = true;
     }
     
     public Team getTeam(){
@@ -66,7 +76,7 @@ public abstract class Unit extends Entity {
     
     private float hitDebounce = 0;
     private boolean hit = false;
-    private final float MAX_HIT_DEBOUNCE = 2F;
+    private final float MAX_HIT_DEBOUNCE = 0.5F;
     public void update(float delta, World w) {
         super.update(delta, w);
         if(hit){
@@ -86,9 +96,11 @@ public abstract class Unit extends Entity {
             if(time % 10 > 5) super.render(batch);
         }
         
+        //if(maxHp == 1) return;
+        
         float mid = (float)hp / maxHp * this.width;
-        batch.draw(hp_plus(), pos.x + 0.1F, pos.y - 0.2F, mid, 0.2F);
-        batch.draw(hp_minus(), pos.x + 0.1F + mid, pos.y - 0.2F, this.width - mid, 0.2F);
+        batch.draw(hp_plus(), pos.x, pos.y - 0.2F, mid, 0.2F);
+        batch.draw(hp_minus(), pos.x + mid, pos.y - 0.2F, this.width - mid, 0.2F);
     }
     
     public static TextureRegion hp_plus(){
@@ -97,5 +109,11 @@ public abstract class Unit extends Entity {
     
     public static TextureRegion hp_minus(){
         return Wars.ur("hp", 0);
+    }
+    
+    public enum STAT{
+        ATTACK,
+        DEFENSE,
+        MAX_HP
     }
 }

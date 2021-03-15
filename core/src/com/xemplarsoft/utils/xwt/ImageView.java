@@ -25,6 +25,7 @@ public class ImageView extends AbstractComponent {
     }
     
     public void render(SpriteBatch batch) {
+        if(image == null) return;
         if(visible) {
             if (border != null) border.render(batch, this);
             Color c = batch.getColor();

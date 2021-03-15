@@ -25,8 +25,8 @@ public class CheckboxSetting extends AbstractSetting<Boolean> {
     }
     
     @Override
-    public void setData(Boolean data) {
-        super.setData(data);
-        checkbox.setChecked(data);
+    public void setData(String data) {
+        this.data = Boolean.parseBoolean(data);
+        checkbox.setChecked(this.data);
     }
 }

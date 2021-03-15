@@ -86,6 +86,10 @@ public class Panel extends AbstractComponent {
         }
     }
 
+    public ComponentHandler getHandler(){
+        return handler;
+    }
+    
     public void render(SpriteBatch batch) {
         if(this.visible && this.region != null){
             batch.draw(this.region, x, y - height, width, height);

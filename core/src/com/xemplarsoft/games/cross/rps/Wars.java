@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -117,7 +118,8 @@ public class Wars extends Game {
 		scr_credits = new CreditsScreen();
 		scr_options = new OptionsScreen();
 		scr_builder = new BuilderScreen();
-
+		
+		scr_options.loadParameters(PARAMS.getParams());
 		setScreen(scr_splash);
 	}
 
@@ -126,31 +128,37 @@ public class Wars extends Game {
 		fnt_text.setUseIntegerPositions(false);
 		fnt_text.getData().setScale(0.01125F);
 		fnt_text.setColor(Color.WHITE);
+		fnt_text.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		
 		fnt_desc = new BitmapFont(Gdx.files.internal("fonts/melon.fnt"));
 		fnt_desc.setUseIntegerPositions(false);
 		fnt_desc.getData().setScale(0.01F);
 		fnt_desc.setColor(Color.BLACK);
+		fnt_desc.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		
 		fnt_splash = new BitmapFont(Gdx.files.internal("fonts/melon.fnt"));
 		fnt_splash.setUseIntegerPositions(false);
 		fnt_splash.getData().setScale(0.02F);
 		fnt_splash.setColor(Color.BLACK);
+		fnt_splash.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		
 		fnt_title = new BitmapFont(Gdx.files.internal("fonts/abs.fnt"));
 		fnt_title.setUseIntegerPositions(false);
 		fnt_title.getData().setScale(0.015F);
 		fnt_title.setColor(Color.BLACK);
+		fnt_title.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		
 		fnt_button = new BitmapFont(Gdx.files.internal("fonts/abs.fnt"));
 		fnt_button.setUseIntegerPositions(false);
 		fnt_button.getData().setScale(0.015F);
 		fnt_button.setColor(Color.WHITE);
+		fnt_button.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		
 		fnt_sub = new BitmapFont(Gdx.files.internal("fonts/abs.fnt"));
 		fnt_sub.setUseIntegerPositions(false);
 		fnt_sub.getData().setScale(0.01F);
 		fnt_sub.setColor(Color.WHITE);
+		fnt_sub.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 	}
 
 	public void dispose () {

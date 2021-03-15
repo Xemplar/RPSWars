@@ -20,13 +20,13 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "RPS Wars";
 		//config.addIcon("raw/app_icon_rounded.png", Files.FileType.Local);
-		config.width = 420;
+		config.width = 432;
 		config.height = 768;
 		config.x = (screenSize.width - config.width) / 2;
 		config.y = (screenSize.height - config.height) / 2;
 		config.undecorated = true;
 		config.resizable = false;
-		
+		config.samples = 3;
 		
 		LwjglApplication l = new LwjglApplication(new Wars(new NoneAdProvider()), config);
 	}

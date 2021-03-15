@@ -1,5 +1,6 @@
 package com.xemplarsoft.games.cross.rps.scenario;
 
+import com.xemplarsoft.games.cross.rps.model.Team;
 import org.omg.Dynamic.Parameter;
 
 public final class ParameterFetcher {
@@ -25,6 +26,49 @@ public final class ParameterFetcher {
     
     public void setParams(Parameters params){
         this.params = params;
+    }
+    public Parameters getParams(){
+        return this.params;
+    }
+    
+    public int getAttack(Team t){
+        switch(t){
+            default: return this.params.sta_scissor.attack;
+            case B: return this.params.sta_paper.attack;
+            case C: return this.params.sta_rock.attack;
+        }
+    }
+    
+    public int getDefense(Team t){
+        switch(t){
+            default: return this.params.sta_scissor.defense;
+            case B: return this.params.sta_paper.defense;
+            case C: return this.params.sta_rock.defense;
+        }
+    }
+    
+    public int getMaxHP(Team t){
+        switch(t){
+            default: return this.params.sta_scissor.hp;
+            case B: return this.params.sta_paper.hp;
+            case C: return this.params.sta_rock.hp;
+        }
+    }
+    
+    public int getUnitCount(Team t){
+        switch(t){
+            default: return this.params.sta_scissor.units;
+            case B: return this.params.sta_paper.units;
+            case C: return this.params.sta_rock.units;
+        }
+    }
+    
+    public float getSpeed(Team t){
+        switch(t){
+            default: return this.params.sta_scissor.speed;
+            case B: return this.params.sta_paper.speed;
+            case C: return this.params.sta_rock.speed;
+        }
     }
     
     public static ParameterFetcher getInstance() {

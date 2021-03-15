@@ -21,6 +21,15 @@ public abstract class AbstractElement {
         this.x = v.x;
         this.y = v.y;
     }
+    
+    public float getWidth(){
+        return width;
+    }
+    
+    public float getHeight(){
+        return height;
+    }
+    
     public void setVisible(boolean visible){
         this.visible = visible;
     }

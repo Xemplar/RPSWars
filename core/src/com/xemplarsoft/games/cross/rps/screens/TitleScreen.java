@@ -7,10 +7,11 @@ import com.xemplarsoft.games.cross.rps.Wars;
 import com.xemplarsoft.games.cross.rps.model.BounceBG;
 import com.xemplarsoft.utils.xwt.*;
 
+import static com.xemplarsoft.games.cross.rps.Wars.scr_game;
 import static com.xemplarsoft.games.cross.rps.Wars.scr_menu;
 
 public class TitleScreen extends ScreenAdapter implements Action{
-    public static final float CAM_WIDTH = 18F, CAM_HEIGHT_MIN = 22F, CAM_HEIGHT_MAX = 40F;
+    public static final float CAM_WIDTH = 18F, CAM_HEIGHT_MIN = 32F, CAM_HEIGHT_MAX = 40F;
     public static float CAM_HEIGHT;
     
     public Panel main;
@@ -58,7 +59,7 @@ public class TitleScreen extends ScreenAdapter implements Action{
         
         fadeIn.setAction(new Action() {
             public void doAction(Button b, Type t) {
-                if(sender == play) Wars.instance.setScreen(scr_menu);
+                if(sender == play) Wars.instance.setScreen(scr_game);
                 if(sender == options) Wars.instance.setScreen(Wars.scr_builder);
                 if(sender == options) Wars.instance.setScreen(Wars.scr_options);
                 if(sender == credits) Wars.instance.setScreen(Wars.scr_credits);
